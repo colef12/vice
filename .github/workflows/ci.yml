@@ -18,6 +18,10 @@ jobs:
   # .github/actions/lfs-checkout.
   lfs:
     name: LFS Objects
+    # colef12 fork: every job here depends on this one, and it pulls git lfs
+    # objects and uploads to mmp's R2 bucket. Run it only upstream; the fork
+    # builds with fork-windows.yml.
+    if: github.repository == 'mmp/vice'
     runs-on: ubuntu-latest
     outputs:
       key: ${{ steps.key.outputs.key }}

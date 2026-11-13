@@ -66,7 +66,7 @@ func walkResourcesDirectory(eg *errgroup.Group) chan string {
 
 			if ptr, err := isLFSPointer(path); err != nil {
 				return err
-			} else if ptr {
+			} else if ptr && !allowLFSPointers {
 				return fmt.Errorf("%s: file holds a git lfs pointer, not its contents. "+
 					"Run \"git lfs checkout\" before bundling resources", path)
 			}
@@ -77,6 +77,37 @@ func walkResourcesDirectory(eg *errgroup.Group) chan string {
 		})
 	})
 	return filesChan
+}
+
+// allowLFSPointers lets -no-upload hash git lfs pointer files by the oid
+// and size they record (which are the SHA256 and size of the real file),
+// so a manifest can be built without downloading the lfs objects. Only
+// valid when every file is already in the bucket, as in builds of a fork
+// that leaves resources/ unchanged.
+var allowLFSPointers bool
+
+// lfsPointerHashSize returns the sha256 and size recorded in a git lfs
+// pointer file.
+func lfsPointerHashSize(path string) (string, int64, error) {
+	b, err := os.ReadFile(path)
+	if err != nil {
+		return "", 0, err
+	}
+	var hash string
+	var size int64 = -1
+	for _, line := range strings.Split(string(b), "\n") {
+		if h, ok := strings.CutPrefix(line, "oid sha256:"); ok {
+			hash = strings.TrimSpace(h)
+		} else if sz, ok := strings.CutPrefix(line, "size "); ok {
+			if _, err := fmt.Sscanf(sz, "%d", &size); err != nil {
+				return "", 0, fmt.Errorf("%s: bad lfs size: %w", path, err)
+			}
+		}
+	}
+	if len(hash) != 64 || size < 0 {
+		return "", 0, fmt.Errorf("%s: malformed git lfs pointer", path)
+	}
+	return hash, size, nil
 }
 
 func isTemporaryFile(name string) bool {
@@ -163,7 +194,12 @@ func uploadToR2(ctx context.Context, client *s3.Client, path, hash string) error
 
 func main() {
 	noUpload := flag.Bool("no-upload", false, "generate manifest.json from local files without uploading to R2")
+	flag.BoolVar(&allowLFSPointers, "lfs-pointers", false, "with -no-upload, take hashes of git lfs pointer files from the pointers")
 	flag.Parse()
+
+	if allowLFSPointers && !*noUpload {
+		log.Fatal("-lfs-pointers requires -no-upload")
+	}
 
 	if flag.NArg() != 0 {
 		log.Fatal("Usage: bundleresources [-no-upload]")
@@ -176,14 +212,23 @@ func main() {
 		filesChan := walkResourcesDirectory(&eg)
 
 		for path := range filesChan {
-			hash, err := sha256file(path)
-			if err != nil {
+			var hash string
+			var size int64
+			if ptr, err := isLFSPointer(path); err != nil {
 				log.Fatalf("%s: %v", path, err)
-			}
-
-			info, err := os.Stat(path)
-			if err != nil {
-				log.Fatalf("%s: %v", path, err)
+			} else if ptr {
+				if hash, size, err = lfsPointerHashSize(path); err != nil {
+					log.Fatalf("%v", err)
+				}
+			} else {
+				if hash, err = sha256file(path); err != nil {
+					log.Fatalf("%s: %v", path, err)
+				}
+				info, err := os.Stat(path)
+				if err != nil {
+					log.Fatalf("%s: %v", path, err)
+				}
+				size = info.Size()
 			}
 
 			relPath, err := filepath.Rel(resourcesDir, path)
@@ -191,7 +236,7 @@ func main() {
 				log.Fatalf("%s: %v", path, err)
 			}
 
-			manifest[relPath] = manifestEntry{Hash: hash, Size: info.Size()}
+			manifest[relPath] = manifestEntry{Hash: hash, Size: size}
 		}
 
 		if err := eg.Wait(); err != nil {

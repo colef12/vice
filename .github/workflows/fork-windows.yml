@@ -1,0 +1,236 @@
+# Windows installer build for the colef12/vice fork.
+#
+# Upstream's ci.yml uploads resources to mmp's R2 bucket and pulls git lfs
+# objects, neither of which a fork should do. This builds the same release
+# installer, but makes manifest.json from the files in resources/ without
+# uploading anything: git lfs files are hashed from their pointers, and a
+# check confirms that every file the manifest lists can be downloaded from
+# vice-resources.pharr.org, where the installed vice.exe fetches them.
+#
+# Files that are new or changed in resources/ in this fork are not in that
+# bucket, so the check fails if any are present; fork-specific resources go
+# elsewhere (see the fork notes).
+
+name: Fork Windows Build
+
+on:
+  push:
+    branches: [ master ]
+    paths-ignore:
+      - 'website/**'
+      - '**.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: fork-windows-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  manifest:
+    name: Resource Manifest
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout source
+      uses: actions/checkout@v6
+      with:
+        lfs: false
+
+    - name: Setup Go
+      uses: actions/setup-go@v6
+      with:
+        go-version-file: go.mod
+        cache-dependency-path: go.sum
+
+    - name: Generate manifest without uploading
+      run: go run ./cmd/bundleresources -no-upload -lfs-pointers
+
+    - name: Check that every resource can be downloaded
+      shell: python
+      run: |
+        import json, sys, urllib.request
+        from concurrent.futures import ThreadPoolExecutor
+
+        manifest = json.load(open("manifest.json"))
+        print(f"{len(manifest)} files in manifest")
+
+        def check(item):
+            path, entry = item
+            # Cloudflare rejects Python's default user agent with 403; send
+            # the one vice's own downloader (Go net/http) uses.
+            req = urllib.request.Request("https://vice-resources.pharr.org/" + entry["hash"], method="HEAD",
+                                         headers={"User-Agent": "Go-http-client/1.1"})
+            for attempt in range(3):
+                try:
+                    with urllib.request.urlopen(req, timeout=30) as resp:
+                        return None if resp.status == 200 else f"{path}: HTTP {resp.status}"
+                except urllib.error.HTTPError as e:
+                    if e.code == 404:
+                        return f"{path}: not in vice-resources (new or changed in this fork?)"
+                    err = f"{path}: HTTP {e.code}"
+                except Exception as e:
+                    err = f"{path}: {e}"
+            return err
+
+        with ThreadPoolExecutor(16) as ex:
+            missing = [m for m in ex.map(check, manifest.items()) if m]
+        for m in missing:
+            print("::error::" + m)
+        sys.exit(1 if missing else 0)
+
+    - name: Upload manifest artifact
+      uses: actions/upload-artifact@v7
+      with:
+        name: manifest-json
+        path: manifest.json
+
+  build-windows:
+    name: Build Windows
+    needs: manifest
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout source
+      uses: actions/checkout@v6
+      with:
+        lfs: false
+        fetch-depth: 0   # the installer version comes from git describe --tags
+        submodules: true
+
+    # The fork may not carry upstream's release tags.
+    - name: Fetch upstream tags
+      shell: bash
+      run: |
+        git fetch --no-recurse-submodules --tags https://github.com/mmp/vice.git
+        git describe --tags --abbrev=8 --dirty --always --long
+        git describe --tags --abbrev=0
+
+    - name: Setup go
+      uses: actions/setup-go@v6
+      with:
+        go-version-file: go.mod
+        cache-dependency-path: go.sum
+
+    - name: Checkout Windows prebuilts
+      uses: actions/checkout@v6
+      with:
+        repository: mmp/vice-windows-ext
+        path: ./ext
+
+    - name: Install windows prebuilts
+      working-directory: ./ext
+      shell: bash
+      run: |
+        unzip -q SDL2-devel-2.24.0-mingw.zip
+        # Use posix-threaded MinGW (not win32) so std::thread works for ggml-vulkan
+        curl -L -o mingw-posix.7z https://github.com/niXman/mingw-builds-binaries/releases/download/12.2.0-rt_v10-rev0/x86_64-12.2.0-release-posix-seh-rt_v10-rev0.7z
+        7z x mingw-posix.7z -omingw
+        echo "${{ github.workspace }}/ext/mingw/mingw64/bin" >> $GITHUB_PATH
+
+    - name: Install Vulkan SDK
+      run: |
+        $ErrorActionPreference = 'Stop'
+        $vulkanVersion = "1.3.296.0"
+        $installerUrl = "https://sdk.lunarg.com/sdk/download/$vulkanVersion/windows/VulkanSDK-$vulkanVersion-Installer.exe"
+        $installerPath = "$env:TEMP\VulkanSDK-Installer.exe"
+        Invoke-WebRequest -Uri $installerUrl -OutFile $installerPath
+        Start-Process -FilePath $installerPath -ArgumentList "--accept-licenses --default-answer --confirm-command install" -Wait -NoNewWindow
+        $sdkPath = "C:\VulkanSDK\$vulkanVersion"
+        echo "VULKAN_SDK=$sdkPath" >> $env:GITHUB_ENV
+        echo "$sdkPath\Bin" >> $env:GITHUB_PATH
+      shell: pwsh
+
+    # whisper.cpp's Vulkan backend needs find_package(SPIRV-Headers CONFIG),
+    # which Vulkan SDK 1.3.296 doesn't provide. It's header-only, so install
+    # it and put it on CMAKE_PREFIX_PATH.
+    - name: Install SPIRV-Headers
+      shell: bash
+      run: |
+        git clone --depth 1 https://github.com/KhronosGroup/SPIRV-Headers.git "$RUNNER_TEMP/SPIRV-Headers-src"
+        cmake -S "$RUNNER_TEMP/SPIRV-Headers-src" -B "$RUNNER_TEMP/SPIRV-Headers-build" -DSPIRV_HEADERS_ENABLE_TESTS=OFF -DCMAKE_INSTALL_PREFIX="$RUNNER_TEMP/SPIRV-Headers"
+        cmake --install "$RUNNER_TEMP/SPIRV-Headers-build"
+        echo "CMAKE_PREFIX_PATH=$RUNNER_TEMP/SPIRV-Headers" >> $GITHUB_ENV
+
+    - name: Copy runtime DLLs to windows/
+      run: |
+        cp ext/mingw/mingw64/bin/libgcc_s_seh-1.dll windows/
+        cp ext/mingw/mingw64/bin/libstdc++-6.dll windows/
+        cp ext/mingw/mingw64/bin/libwinpthread-1.dll windows/
+        cp ext/SDL2-2.24.0/x86_64-w64-mingw32/bin/SDL2.dll windows/
+
+    - name: Get sherpa-onnx commit SHA
+      id: sherpa-sha
+      run: echo "sha=$(git -C sherpa-onnx rev-parse HEAD)" >> $env:GITHUB_OUTPUT
+      shell: pwsh
+
+    - name: Cache sherpa-onnx build
+      uses: actions/cache@v5
+      with:
+        path: sherpa-onnx/build_go
+        key: sherpa-onnx-win-msvc-${{ steps.sherpa-sha.outputs.sha }}-${{ hashFiles('build.bat') }}
+
+    - name: Get whisper.cpp commit SHA
+      id: whisper-sha
+      run: echo "sha=$(git -C whisper.cpp rev-parse HEAD)" >> $env:GITHUB_OUTPUT
+      shell: pwsh
+
+    - name: Cache whisper.cpp build
+      uses: actions/cache@v5
+      with:
+        path: whisper.cpp/build_go
+        key: whisper-cpp-win-vulkan-posix-${{ steps.whisper-sha.outputs.sha }}-sdk1.3.296.0-${{ hashFiles('build.bat') }}
+
+    - name: Build vice (debug pass, also builds whisper/sherpa)
+      run: |
+        $env:CGO_LDFLAGS = "-L ../ext/SDL2-2.24.0/x86_64-w64-mingw32/lib -L $env:VULKAN_SDK/Lib"
+        .\build.bat --icons
+        if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+        # build.bat can exit 0 after a failed whisper.cpp/sherpa build.
+        foreach ($exe in "vice.exe","backshop.exe","viceserver.exe") {
+          if (-not (Test-Path $exe)) { Write-Error "$exe was not built"; exit 1 }
+        }
+      shell: pwsh
+      env:
+        CGO_CFLAGS: "-I ../ext/SDL2-2.24.0/x86_64-w64-mingw32/include"
+        CGO_CPPFLAGS: "-I ../ext/SDL2-2.24.0/x86_64-w64-mingw32/include"
+
+    # The release build must produce fresh executables, not reuse these.
+    - name: Remove debug-pass executables
+      run: Remove-Item -ErrorAction SilentlyContinue *.exe
+      shell: pwsh
+
+    - name: Download manifest
+      uses: actions/download-artifact@v8
+      with:
+        name: manifest-json
+        path: util/
+
+    - name: Build for release (downloads resources at runtime)
+      run: |
+        $env:CGO_LDFLAGS = "-L ../ext/SDL2-2.24.0/x86_64-w64-mingw32/lib -L $env:VULKAN_SDK/Lib"
+        .\build.bat --release
+        if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+        # build.bat can exit 0 after a failed whisper.cpp/sherpa build.
+        foreach ($exe in "vice.exe","backshop.exe","viceserver.exe") {
+          if (-not (Test-Path $exe)) { Write-Error "$exe was not built"; exit 1 }
+        }
+      shell: pwsh
+      env:
+        CGO_CFLAGS: "-I ../ext/SDL2-2.24.0/x86_64-w64-mingw32/include"
+        CGO_CPPFLAGS: "-I ../ext/SDL2-2.24.0/x86_64-w64-mingw32/include"
+
+    - name: Add WIX to path
+      run: echo "C:\Program Files (x86)\WiX Toolset v3.14\bin" >> $GITHUB_PATH
+      shell: bash
+
+    - name: Create installer
+      run: .\windows\makeinstaller.bat
+
+    - name: Save installer
+      uses: actions/upload-artifact@v7
+      with:
+        name: Vice-Custom-installer
+        path: Vice-installer.msi
