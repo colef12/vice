@@ -39,7 +39,9 @@ var (
 	navLogCategories = flag.String("navlog-categories", "all", "navigation log `categories`")
 	navLogCallsign   = flag.String("navlog-callsign", "", "filter navigation logs to only show this `callsign`")
 	smoketest        = flag.Duration("smoketest", 0, "load the scenarios, run a sim with an RPC client attached for this long, and exit; for CI under -race")
-	wxFacilities     = flag.String("wxfacilities", "", "write the weather pipeline's airport and facility list as JSON to `file` and exit")
+	// colef12 fork: run every scenario of one facility in the smoketest.
+	smoketestFacility = flag.String("smoketest-facility", "", "with -smoketest, run each of this `facility`'s scenarios for the -smoketest duration instead of one default scenario")
+	wxFacilities      = flag.String("wxfacilities", "", "write the weather pipeline's airport and facility list as JSON to `file` and exit")
 )
 
 // writeWXFacilities writes the list that wxingest and wxpackage use to decide
@@ -174,6 +176,10 @@ func runSmoketest(config server.LaunchConfig, d time.Duration, lg *log.Logger) e
 		req.Facility = util.SortedMapKeys(connect.ScenarioCatalogs)[0]
 	}
 
+	if *smoketestFacility != "" {
+		return smoketestAllScenarios(client, connect, *smoketestFacility, d, lg)
+	}
+
 	var catalog *scenario.Catalog
 	req.GroupName, catalog = util.FirstSortedMapEntry(connect.ScenarioCatalogs[req.Facility])
 	req.ScenarioName = catalog.DefaultScenario
@@ -204,5 +210,52 @@ func runSmoketest(config server.LaunchConfig, d time.Duration, lg *log.Logger) e
 			return fmt.Errorf("%s: %w", server.GetStateUpdateRPC, err)
 		}
 	}
+	return nil
+}
+
+// smoketestAllScenarios starts each scenario of the given facility in turn
+// and runs it for d (colef12 fork).
+func smoketestAllScenarios(client *rpc.Client, connect server.ConnectResult, facility string,
+	d time.Duration, lg *log.Logger) error {
+	groups, ok := connect.ScenarioCatalogs[facility]
+	if !ok {
+		return fmt.Errorf("%s: no scenarios for facility", facility)
+	}
+
+	n := 0
+	for _, groupName := range util.SortedMapKeys(groups) {
+		catalog := groups[groupName]
+		for _, scenarioName := range util.SortedMapKeys(catalog.Scenarios) {
+			req := server.MakeNewSimRequest()
+			req.Initials = "XX"
+			req.StartTime = time.Now().UTC()
+			req.Facility = facility
+			req.GroupName = groupName
+			req.ScenarioName = scenarioName
+			req.ScenarioSpec = catalog.Scenarios[scenarioName]
+			if src := &req.ScenarioSpec.LaunchConfig.TrafficSource; !slices.Contains(req.ScenarioSpec.TrafficSources, *src) {
+				if len(req.ScenarioSpec.TrafficSources) == 0 {
+					return fmt.Errorf("%s/%s: scenario offers no traffic sources", groupName, scenarioName)
+				}
+				*src = req.ScenarioSpec.TrafficSources[0]
+			}
+
+			var result server.NewSimResult
+			if err := client.Call(server.NewSimRPC, &req, &result); err != nil {
+				return fmt.Errorf("%s/%s: %s: %w", groupName, scenarioName, server.NewSimRPC, err)
+			}
+			lg.Infof("smoketest: running %s/%s/%s for %v", facility, groupName, scenarioName, d)
+			fmt.Printf("smoketest: %s/%s/%s\n", facility, groupName, scenarioName)
+
+			for stop := time.Now().Add(d); time.Now().Before(stop); {
+				var update server.SimStateUpdate
+				if err := client.Call(server.GetStateUpdateRPC, result.ControllerToken, &update); err != nil {
+					return fmt.Errorf("%s/%s: %s: %w", groupName, scenarioName, server.GetStateUpdateRPC, err)
+				}
+			}
+			n++
+		}
+	}
+	fmt.Printf("smoketest: ran %d %s scenarios\n", n, facility)
 	return nil
 }

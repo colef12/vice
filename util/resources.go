@@ -24,7 +24,7 @@ var resourcesOnce sync.Once
 
 func InitResources() {
 	resourcesOnce.Do(func() {
-		resourcesFS = initResourcesFS()
+		resourcesFS = withCustomResources(initResourcesFS()) // colef12 fork
 	})
 }
 

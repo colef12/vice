@@ -27,6 +27,53 @@ type InstallFile struct {
 type Release struct {
 	Version   string
 	FontFiles []InstallFile
+
+	// colef12 fork: the custom-resources directory tree that ships with
+	// Vice Custom, as WiX Directory/Component elements, and the ids of
+	// its components.
+	CustomResourcesXML   string
+	CustomResourcesComps []string
+}
+
+// customResourcesTree returns WiX markup for the directory tree rooted at
+// root, one component per file, and the ids of those components. It
+// returns "" if root doesn't exist.
+func customResourcesTree(root string) (string, []string) {
+	if fi, err := os.Stat(root); err != nil || !fi.IsDir() {
+		return "", nil
+	}
+
+	var sb strings.Builder
+	var comps []string
+	ndir := 0
+	var walk func(dir, indent string)
+	walk = func(dir, indent string) {
+		entries, err := os.ReadDir(dir)
+		if err != nil {
+			panic(err)
+		}
+		for _, e := range entries {
+			p := filepath.Join(dir, e.Name())
+			if strings.HasPrefix(e.Name(), ".") {
+				continue
+			}
+			if e.IsDir() {
+				ndir++
+				fmt.Fprintf(&sb, "%s<Directory Id=\"CRDir%d\" Name=\"%s\">\n", indent, ndir, e.Name())
+				walk(p, indent+"  ")
+				fmt.Fprintf(&sb, "%s</Directory>\n", indent)
+			} else {
+				id := fmt.Sprintf("CRFile%d", len(comps)+1)
+				fmt.Fprintf(&sb, "%s<Component Id=\"%s\" Guid=\"*\">\n", indent, id)
+				fmt.Fprintf(&sb, "%s  <File Id=\"%s\" KeyPath=\"yes\" Name=\"%s\" Source=\"%s\" />\n",
+					indent, id, e.Name(), p)
+				fmt.Fprintf(&sb, "%s</Component>\n", indent)
+				comps = append(comps, id)
+			}
+		}
+	}
+	walk(root, "            ")
+	return sb.String(), comps
 }
 
 func getLatestGitTag() string {
@@ -121,6 +168,7 @@ func main() {
 	}
 
 	r.FontFiles = initFiles("fonts/*.zst")
+	r.CustomResourcesXML, r.CustomResourcesComps = customResourcesTree("custom-resources")
 
 	tmpl, err := template.New("installer.wxs").Parse(xmlTemplate)
 	if err != nil {
@@ -196,7 +244,9 @@ const xmlTemplate = `<?xml version='1.0' encoding='utf-8'?>
           <Component Id="vulkanloader" Guid='3EE9D914-6E79-4E3B-A3C3-559782DA3045'>
             <File KeyPath="yes" Source="windows/vulkan-1.dll"></File>
           </Component>
-          <Directory Id="MyFontsFolder" Name="fonts">
+{{if .CustomResourcesXML}}          <Directory Id="CustomResourcesFolder" Name="custom-resources">
+{{.CustomResourcesXML}}          </Directory>
+{{end}}          <Directory Id="MyFontsFolder" Name="fonts">
             <Component Id="FontsId" Guid="B3D9AC47-25DC-4D6F-B05C-609BC18FDD04">
 {{range .FontFiles}}                <File Id="{{.Id}}" Source="{{.Source}}" {{if .KeyPath}}KeyPath="yes" {{end}}/>
 {{end}}
@@ -293,6 +343,8 @@ const xmlTemplate = `<?xml version='1.0' encoding='utf-8'?>
       <ComponentRef Id="onnxruntime" />
       <ComponentRef Id="vulkanloader" />
       <ComponentRef Id="FontsId" />
+{{range .CustomResourcesComps}}      <ComponentRef Id="{{.}}" />
+{{end}}
       <ComponentRef Id="ApplicationShortcut" />
       <ComponentRef Id="ApplicationShortcutDesktop" />
     </Feature>
