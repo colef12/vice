@@ -1,0 +1,382 @@
+{
+  "control_positions": {
+    "1N": {
+      "callsign": "CMH_N_APP",
+      "frequency": 125950,
+      "radio_name": "Columbus Approach"
+    },
+    "1P": {
+      "callsign": "CMH_P_APP",
+      "frequency": 120200,
+      "radio_name": "Columbus Approach"
+    },
+    "1S": {
+      "callsign": "CMH_S_APP",
+      "frequency": 134000,
+      "radio_name": "Columbus Approach"
+    },
+    "1F": {
+      "callsign": "CMH_F_APP",
+      "frequency": 118200,
+      "radio_name": "Columbus Approach"
+    },
+    "1L": {
+      "callsign": "CMH_L_APP",
+      "frequency": 132300,
+      "radio_name": "Columbus Approach"
+    },
+    "1E": {
+      "callsign": "CMH_E_TWR",
+      "frequency": 132700,
+      "radio_name": "Columbus Tower"
+    },
+    "1W": {
+      "callsign": "CMH_W_TWR",
+      "frequency": 127525,
+      "radio_name": "Columbus Tower"
+    },
+    "1X": {
+      "callsign": "DAY_X_APP",
+      "frequency": 118850,
+      "radio_name": "Columbus Approach"
+    },
+    "1U": {
+      "callsign": "DAY_U_APP",
+      "frequency": 134450,
+      "radio_name": "Columbus Approach"
+    },
+    "1M": {
+      "callsign": "DAY_M_APP",
+      "frequency": 120925,
+      "radio_name": "Columbus Approach"
+    }
+  },
+  "facility_adaptations": {
+    "center": "KCMH",
+    "range": 50,
+    "max_distance": 150,
+    "video_map_file": "videomaps/ZID-stars.mappack",
+    "lists": {
+      "ssa": {
+        "system_altimeter": "KCMH",
+        "altimeters": [
+          "KCMH",
+          "KDAY",
+          "KLCK"
+        ]
+      }
+    },
+    "radar_sites": {
+      "CMH": {
+        "char": "C",
+        "position": "39.9973,-82.8853",
+        "elevation": 815,
+        "primary_range": 60,
+        "secondary_range": 120,
+        "silence_angle": 30,
+        "slope_angle": 0.175
+      },
+      "DAY": {
+        "char": "D",
+        "position": "39.9002,-84.2245",
+        "elevation": 1009,
+        "primary_range": 60,
+        "secondary_range": 120,
+        "silence_angle": 30,
+        "slope_angle": 0.175
+      }
+    },
+    "scratchpads": {
+      "RDBUV": "RDB",
+      "OWEBO": "OWB",
+      "POBSE": "POB",
+      "PKACZ": "PKA",
+      "TRIVO": "TRI",
+      "WIPOT": "WIP",
+      "WAMBO": "WAM",
+      "ROD": "ROD"
+    },
+    "datablocks": {
+      "display_rnav_symbol": true,
+      "allow_long_scratchpad": true
+    },
+    "untracked_position_symbol_overrides": {
+      "beacon_codes": "1200",
+      "symbol": "V"
+    },
+    "areas": {
+      "1": {
+        "video_maps": [
+          "Columbus RWY 28s",
+          "Columbus RWY 10s",
+          "CMH 3 NM MVA",
+          "CMH Class C/D",
+          "Dayton RWY 18/24s",
+          "Dayton RWY 6s",
+          "CMH TRACON Boundary",
+          "CMH 5 NM MVA",
+          "Columbus ILS RWY 28 Fixes",
+          "Columbus ILS RWY 10 Fixes",
+          "Dayton ILS RWY 18/24 Fixes",
+          "DAY ILS 6L Fixes",
+          "CMH Primary RVM",
+          "CMH Secondary RVM",
+          "ZID CMH CLPRR STAR",
+          "ZID CMH DUBLN STAR",
+          "ZID CMH JAKTZ STAR",
+          "ZID CMH SCRLT STAR",
+          "ZID DAY DANEI STAR",
+          "ZID DAY KEKEE STAR",
+          "CMH RNAV Y RWY 28L",
+          "CMH RNAV Y RWY 28R",
+          "CMH RNAV Y RWY 10L",
+          "CMH RNAV Y RWY 10R",
+          "LCK RNAV RWY 23L",
+          "LCK RNAV RWY 5L",
+          "OSU RNAV RWY 27L",
+          "OSU RNAV RWY 9R",
+          "TZR RNAV RWY 22",
+          "TZR RNAV RWY 4",
+          "DAY RNAV Y RWY 24R",
+          "DAY RNAV Y RWY 6L",
+          "FFO RNAV RWY 23L",
+          "FFO RNAV RWY 5L",
+          "MGY RNAV RWY 2/20",
+          "CMH Cab",
+          "DAY Cab",
+          "LCK Cab"
+        ]
+      }
+    },
+    "configurations": {
+      "CW": {
+        "inbound_assignments": {
+          "DUBLN1": "1N",
+          "CBUSS2": "1N",
+          "CLPRR4": "1P",
+          "JAKTZ2": "1S",
+          "SCRLT3": "1S"
+        },
+        "departure_assignments": {
+          "KCMH/28R": "1N",
+          "KCMH/28L": "1S",
+          "KLCK": "1L",
+          "KOSU": "1N"
+        },
+        "default_consolidation": {
+          "1N": [
+            "1P",
+            "1S",
+            "1F",
+            "1L"
+          ]
+        },
+        "listed_positions": {
+          "1N": "Columbus North: DUBLN1/CBUSS2 arrivals, North/East departures (CMH 28R/10L), OSU",
+          "1P": "Columbus East: CLPRR4 arrivals",
+          "1S": "Columbus South: JAKTZ2/SCRLT3 arrivals, South/West departures (CMH 28L/10R)",
+          "1F": "Columbus Final",
+          "1L": "Rickenbacker: LCK, TZR"
+        }
+      },
+      "CE": {
+        "inbound_assignments": {
+          "DUBLN1": "1N",
+          "CBUSS2": "1N",
+          "CLPRR4": "1P",
+          "JAKTZ2": "1S",
+          "SCRLT3": "1S"
+        },
+        "departure_assignments": {
+          "KCMH/10L": "1N",
+          "KCMH/10R": "1S",
+          "KLCK": "1L",
+          "KOSU": "1N"
+        },
+        "default_consolidation": {
+          "1N": [
+            "1P",
+            "1S",
+            "1F",
+            "1L"
+          ]
+        },
+        "listed_positions": {
+          "1N": "Columbus North: DUBLN1/CBUSS2 arrivals, North/East departures (CMH 28R/10L), OSU",
+          "1P": "Columbus East: CLPRR4 arrivals",
+          "1S": "Columbus South: JAKTZ2/SCRLT3 arrivals, South/West departures (CMH 28L/10R)",
+          "1F": "Columbus Final",
+          "1L": "Rickenbacker: LCK, TZR"
+        }
+      },
+      "DS": {
+        "inbound_assignments": {
+          "DANEI3": "1M",
+          "DAY.N": "1M",
+          "DAY.S": "1U",
+          "DAY.W": "1U"
+        },
+        "departure_assignments": {
+          "KDAY/24L": "1U",
+          "KDAY/18": "1U"
+        },
+        "default_consolidation": {
+          "1X": [
+            "1U",
+            "1M"
+          ]
+        },
+        "listed_positions": {
+          "1X": "Dayton Final",
+          "1M": "Dayton East/North: DANEI3 and ROD arrivals",
+          "1U": "Dayton South/West: HICKS and west arrivals, DAY departures"
+        }
+      },
+      "DN": {
+        "inbound_assignments": {
+          "DANEI3": "1M",
+          "DAY.N": "1M",
+          "DAY.S": "1U",
+          "DAY.W": "1U"
+        },
+        "departure_assignments": {
+          "KDAY/6R": "1M",
+          "KDAY/36": "1U"
+        },
+        "default_consolidation": {
+          "1X": [
+            "1U",
+            "1M"
+          ]
+        },
+        "listed_positions": {
+          "1X": "Dayton Final",
+          "1M": "Dayton East/North: DANEI3 and ROD arrivals",
+          "1U": "Dayton South/West: HICKS and west arrivals, DAY departures"
+        }
+      },
+      "XW": {
+        "inbound_assignments": {
+          "DUBLN1": "1N",
+          "CBUSS2": "1N",
+          "CLPRR4": "1P",
+          "JAKTZ2": "1S",
+          "SCRLT3": "1S",
+          "DANEI3": "1M",
+          "DAY.N": "1M",
+          "DAY.S": "1U",
+          "DAY.W": "1U"
+        },
+        "departure_assignments": {
+          "KCMH/28R": "1N",
+          "KCMH/28L": "1S",
+          "KLCK": "1L",
+          "KOSU": "1N",
+          "KDAY/24L": "1U",
+          "KDAY/18": "1U"
+        },
+        "default_consolidation": {
+          "1N": [
+            "1P",
+            "1S",
+            "1F",
+            "1L",
+            "1X"
+          ],
+          "1X": [
+            "1U",
+            "1M"
+          ]
+        },
+        "listed_positions": {
+          "1N": "Columbus North: DUBLN1/CBUSS2 arrivals, North/East departures (CMH 28R/10L), OSU",
+          "1P": "Columbus East: CLPRR4 arrivals",
+          "1S": "Columbus South: JAKTZ2/SCRLT3 arrivals, South/West departures (CMH 28L/10R)",
+          "1F": "Columbus Final",
+          "1L": "Rickenbacker: LCK, TZR",
+          "1X": "Dayton Final",
+          "1M": "Dayton East/North: DANEI3 and ROD arrivals",
+          "1U": "Dayton South/West: HICKS and west arrivals, DAY departures"
+        }
+      },
+      "XE": {
+        "inbound_assignments": {
+          "DUBLN1": "1N",
+          "CBUSS2": "1N",
+          "CLPRR4": "1P",
+          "JAKTZ2": "1S",
+          "SCRLT3": "1S",
+          "DANEI3": "1M",
+          "DAY.N": "1M",
+          "DAY.S": "1U",
+          "DAY.W": "1U"
+        },
+        "departure_assignments": {
+          "KCMH/10L": "1N",
+          "KCMH/10R": "1S",
+          "KLCK": "1L",
+          "KOSU": "1N",
+          "KDAY/6R": "1M",
+          "KDAY/36": "1U"
+        },
+        "default_consolidation": {
+          "1N": [
+            "1P",
+            "1S",
+            "1F",
+            "1L",
+            "1X"
+          ],
+          "1X": [
+            "1U",
+            "1M"
+          ]
+        },
+        "listed_positions": {
+          "1N": "Columbus North: DUBLN1/CBUSS2 arrivals, North/East departures (CMH 28R/10L), OSU",
+          "1P": "Columbus East: CLPRR4 arrivals",
+          "1S": "Columbus South: JAKTZ2/SCRLT3 arrivals, South/West departures (CMH 28L/10R)",
+          "1F": "Columbus Final",
+          "1L": "Rickenbacker: LCK, TZR",
+          "1X": "Dayton Final",
+          "1M": "Dayton East/North: DANEI3 and ROD arrivals",
+          "1U": "Dayton South/West: HICKS and west arrivals, DAY departures"
+        }
+      }
+    }
+  },
+  "handoff_ids": [
+    {
+      "id": "CLE",
+      "prefix": "2"
+    },
+    {
+      "id": "CVG",
+      "prefix": "6"
+    },
+    {
+      "id": "FWA",
+      "prefix": "4"
+    },
+    {
+      "id": "IND",
+      "prefix": "5"
+    },
+    {
+      "id": "TOL",
+      "prefix": "3"
+    },
+    {
+      "id": "ZAU",
+      "prefix": "G"
+    },
+    {
+      "id": "ZID",
+      "prefix": "C"
+    },
+    {
+      "id": "ZOB",
+      "prefix": "O"
+    }
+  ]
+}

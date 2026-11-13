@@ -1,0 +1,584 @@
+{
+  "name": "Dayton Area",
+  "tracon": "CMH",
+  "default_scenario": "DAY - Southwest Flow (24s/18)",
+  "fixes": {
+    "_DAYS_HO": "N039.19.13.474,W084.27.44.919",
+    "_DAYN_SP": "N040.32.49.942,W084.28.21.933",
+    "_DAYN_HO": "N040.26.36.397,W084.18.03.220",
+    "_DAYW_SP": "N039.45.09.861,W085.06.32.708",
+    "_DAYW_HO": "N039.47.18.016,W084.53.50.130",
+    "_DAYW_FN": "N039.50.17.432,W084.36.02.521"
+  },
+  "airports": {
+    "KDAY": {
+      "approaches": {
+        "I4R": {
+          "cifp_id": "I24R"
+        },
+        "I4L": {
+          "cifp_id": "I24L"
+        },
+        "I6L": {
+          "cifp_id": "I6L"
+        },
+        "I18": {
+          "cifp_id": "I18"
+        },
+        "R4R": {
+          "cifp_id": "RY24R"
+        },
+        "Z4R": {
+          "cifp_id": "RZ24R"
+        },
+        "R6L": {
+          "cifp_id": "RY6L"
+        },
+        "Z6L": {
+          "cifp_id": "RZ6L"
+        },
+        "R4L": {
+          "cifp_id": "R24L"
+        },
+        "R6R": {
+          "cifp_id": "R6R"
+        },
+        "R18": {
+          "cifp_id": "R18"
+        },
+        "R36": {
+          "cifp_id": "R36"
+        }
+      },
+      "departure_routes": {
+        "24L": {
+          "WAMBO": {
+            "cleared_altitude": 5000,
+            "waypoints": "KDAY-6R/h260"
+          },
+          "ROD": {
+            "cleared_altitude": 5000,
+            "waypoints": "KDAY-6R/h300"
+          },
+          "TRIVO": {
+            "cleared_altitude": 5000,
+            "waypoints": "KDAY-6R/h220"
+          },
+          "WIPOT": {
+            "cleared_altitude": 5000,
+            "waypoints": "KDAY-6R/h300"
+          }
+        },
+        "18": {
+          "TRIVO": {
+            "cleared_altitude": 5000,
+            "waypoints": "KDAY-36/h200"
+          },
+          "WIPOT": {
+            "cleared_altitude": 5000,
+            "waypoints": "KDAY-36/h150"
+          },
+          "WAMBO": {
+            "cleared_altitude": 5000,
+            "waypoints": "KDAY-36/h230"
+          },
+          "ROD": {
+            "cleared_altitude": 5000,
+            "waypoints": "KDAY-36/h270"
+          }
+        },
+        "6R": {
+          "ROD": {
+            "cleared_altitude": 5000,
+            "waypoints": "KDAY-24L/h030"
+          },
+          "WIPOT": {
+            "cleared_altitude": 5000,
+            "waypoints": "KDAY-24L/h090"
+          },
+          "TRIVO": {
+            "cleared_altitude": 5000,
+            "waypoints": "KDAY-24L/h120"
+          },
+          "WAMBO": {
+            "cleared_altitude": 5000,
+            "waypoints": "KDAY-24L/h330"
+          }
+        },
+        "36": {
+          "WAMBO": {
+            "cleared_altitude": 5000,
+            "waypoints": "KDAY-18/h320"
+          },
+          "ROD": {
+            "cleared_altitude": 5000,
+            "waypoints": "KDAY-18/h010"
+          },
+          "TRIVO": {
+            "cleared_altitude": 5000,
+            "waypoints": "KDAY-18/h270"
+          },
+          "WIPOT": {
+            "cleared_altitude": 5000,
+            "waypoints": "KDAY-18/h060"
+          }
+        }
+      },
+      "departures": [
+        {
+          "destination": "KATL",
+          "exit": "TRIVO",
+          "waypoints": "TRIVO CVG IIU HITMN NEWBB IHAVE MTHEW CHPPR1",
+          "airlines": [
+            {
+              "icao": "DAL"
+            },
+            {
+              "icao": "EDV"
+            }
+          ]
+        },
+        {
+          "destination": "KCLT",
+          "exit": "TRIVO",
+          "waypoints": "TRIVO CVG FLM TAFTT PARQR6",
+          "airlines": [
+            {
+              "icao": "AAL"
+            },
+            {
+              "icao": "PDT"
+            }
+          ]
+        },
+        {
+          "destination": "KDFW",
+          "exit": "TRIVO",
+          "waypoints": "TRIVO CVG PXV J131 LIT MEEOW FEWWW SEEVR4",
+          "airlines": [
+            {
+              "icao": "AAL"
+            },
+            {
+              "icao": "ENY"
+            }
+          ]
+        },
+        {
+          "destination": "KDCA",
+          "exit": "WIPOT",
+          "waypoints": "WIPOT FLYIR APE J30 BUCKO FRDMM7",
+          "airlines": [
+            {
+              "icao": "AAL"
+            },
+            {
+              "icao": "RPA"
+            }
+          ]
+        },
+        {
+          "destination": "KIAD",
+          "exit": "WIPOT",
+          "waypoints": "WIPOT FLYIR APE AIR MGW GIBBZ6",
+          "airlines": [
+            {
+              "icao": "UAL"
+            },
+            {
+              "icao": "SKW"
+            }
+          ]
+        },
+        {
+          "destination": "KPHL",
+          "exit": "WIPOT",
+          "waypoints": "WIPOT FLYIR APE JST BOJID4",
+          "airlines": [
+            {
+              "icao": "AAL"
+            },
+            {
+              "icao": "PDT"
+            }
+          ]
+        },
+        {
+          "destination": "KDEN",
+          "exit": "WAMBO",
+          "waypoints": "WAMBO VHP AXC HYS J24 OATHE CLASH5",
+          "airlines": [
+            {
+              "icao": "UAL"
+            }
+          ]
+        },
+        {
+          "destination": "KORD",
+          "exit": "ROD",
+          "waypoints": "ROD FWA WATSN4",
+          "airlines": [
+            {
+              "icao": "UAL"
+            },
+            {
+              "icao": "AAL"
+            },
+            {
+              "icao": "SKW"
+            },
+            {
+              "icao": "ENY"
+            }
+          ],
+          "altitude": [
+            16000,
+            22000
+          ]
+        }
+      ],
+      "exit_categories": {
+        "TRIVO": "South",
+        "WIPOT": "East",
+        "WAMBO": "West",
+        "ROD": "North"
+      },
+      "omit_arrival_scratchpad": true,
+      "tower_list": 1
+    },
+    "KMGY": {
+      "vfr": {
+        "random_routes": {
+          "rate": 2.0,
+          "fleet": "lightGA"
+        }
+      }
+    },
+    "I19": {
+      "vfr": {
+        "random_routes": {
+          "rate": 1.2,
+          "fleet": "lightGA"
+        }
+      }
+    },
+    "I73": {
+      "vfr": {
+        "random_routes": {
+          "rate": 0.8,
+          "fleet": "lightGA"
+        }
+      }
+    },
+    "KSGH": {
+      "vfr": {
+        "random_routes": {
+          "rate": 0.8,
+          "fleet": "lightGA"
+        }
+      }
+    },
+    "KVES": {
+      "vfr": {
+        "random_routes": {
+          "rate": 0.4,
+          "fleet": "lightGA"
+        }
+      }
+    },
+    "KHAO": {
+      "vfr": {
+        "random_routes": {
+          "rate": 0.8,
+          "fleet": "lightGA"
+        }
+      }
+    },
+    "KAXV": {
+      "vfr": {
+        "random_routes": {
+          "rate": 0.4,
+          "fleet": "lightGA"
+        }
+      }
+    }
+  },
+  "inbound_flows": {
+    "DANEI3": {
+      "arrivals": [
+        {
+          "star": "DANEI3",
+          "spawn": "COOJO@0.3",
+          "initial_controller": "C88",
+          "initial_altitude": 11000,
+          "initial_speed": 280,
+          "is_rnav": false,
+          "expect_approach": null,
+          "airports": [
+            "KDAY"
+          ],
+          "airlines": {
+            "KDAY": [
+              {
+                "icao": "AAL",
+                "airport": "KDCA"
+              },
+              {
+                "icao": "RPA",
+                "airport": "KDCA"
+              },
+              {
+                "icao": "UAL",
+                "airport": "KIAD"
+              },
+              {
+                "icao": "SKW",
+                "airport": "KIAD"
+              },
+              {
+                "icao": "AAL",
+                "airport": "KPHL"
+              },
+              {
+                "icao": "PDT",
+                "airport": "KPHL"
+              }
+            ]
+          },
+          "flight_strip_route": "/. COOJO.DANEI3",
+          "cleared_altitude": 10000
+        }
+      ]
+    },
+    "DAY.S": {
+      "arrivals": [
+        {
+          "waypoints": "HICKS _DAYS_HO/ho FIITZ/a5000/h010",
+          "initial_controller": "C31",
+          "initial_altitude": 11000,
+          "initial_speed": 270,
+          "expect_approach": null,
+          "airports": [
+            "KDAY"
+          ],
+          "airlines": {
+            "KDAY": [
+              {
+                "icao": "DAL",
+                "airport": "KATL"
+              },
+              {
+                "icao": "EDV",
+                "airport": "KATL"
+              },
+              {
+                "icao": "AAL",
+                "airport": "KCLT"
+              },
+              {
+                "icao": "PDT",
+                "airport": "KCLT"
+              },
+              {
+                "icao": "AAL",
+                "airport": "KDFW"
+              },
+              {
+                "icao": "ENY",
+                "airport": "KDFW"
+              }
+            ]
+          },
+          "flight_strip_route": "/. HICKS FIITZ",
+          "assigned_altitude": 7000
+        }
+      ]
+    },
+    "DAY.N": {
+      "arrivals": [
+        {
+          "waypoints": "_DAYN_SP _DAYN_HO/ho ROD/a5000/h200",
+          "initial_controller": "C32",
+          "initial_altitude": 11000,
+          "initial_speed": 270,
+          "expect_approach": null,
+          "airports": [
+            "KDAY"
+          ],
+          "airlines": {
+            "KDAY": [
+              {
+                "icao": "UAL",
+                "airport": "KORD"
+              },
+              {
+                "icao": "AAL",
+                "airport": "KORD"
+              },
+              {
+                "icao": "SKW",
+                "airport": "KORD"
+              },
+              {
+                "icao": "ENY",
+                "airport": "KORD"
+              }
+            ]
+          },
+          "flight_strip_route": "/. FWA ROD",
+          "assigned_altitude": 7000
+        }
+      ]
+    },
+    "DAY.W": {
+      "arrivals": [
+        {
+          "waypoints": "_DAYW_SP _DAYW_HO/ho _DAYW_FN/a5000/h090",
+          "initial_controller": "C88",
+          "initial_altitude": 11000,
+          "initial_speed": 270,
+          "expect_approach": null,
+          "airports": [
+            "KDAY"
+          ],
+          "airlines": {
+            "KDAY": [
+              {
+                "icao": "UAL",
+                "airport": "KDEN"
+              },
+              {
+                "icao": "AAY",
+                "airport": "KLAS"
+              }
+            ]
+          },
+          "flight_strip_route": "/. SHB",
+          "assigned_altitude": 7000
+        }
+      ]
+    }
+  },
+  "scenarios": {
+    "DAY - Southwest Flow (24s/18)": {
+      "description": "Dayton sectors of Columbus TRACON combined on 1X. Land 24R; depart 24L (West/North) and 18 (South/East).",
+      "configuration": "DS",
+      "center": "KDAY",
+      "range": 35,
+      "arrival_runways": [
+        {
+          "airport": "KDAY",
+          "runway": "24R"
+        }
+      ],
+      "departure_runways": [
+        {
+          "airport": "KDAY",
+          "runway": "24L",
+          "rate": 3,
+          "category": "West"
+        },
+        {
+          "airport": "KDAY",
+          "runway": "24L",
+          "rate": 2,
+          "category": "North"
+        },
+        {
+          "airport": "KDAY",
+          "runway": "18",
+          "rate": 3,
+          "category": "South"
+        },
+        {
+          "airport": "KDAY",
+          "runway": "18",
+          "rate": 2,
+          "category": "East"
+        }
+      ],
+      "inbound_rates": {
+        "DANEI3": {
+          "KDAY": 3
+        },
+        "DAY.S": {
+          "KDAY": 3
+        },
+        "DAY.N": {
+          "KDAY": 2
+        },
+        "DAY.W": {
+          "KDAY": 1
+        }
+      },
+      "wind": {
+        "direction": "170-300"
+      },
+      "default_maps": [
+        "Dayton RWY 18/24s",
+        "CMH 3 NM MVA",
+        "CMH Class C/D"
+      ]
+    },
+    "DAY - Northeast Flow (6s/36)": {
+      "description": "Dayton sectors of Columbus TRACON combined on 1X. Land 6L; depart 6R (North/East/South) and 36 (West).",
+      "configuration": "DN",
+      "center": "KDAY",
+      "range": 35,
+      "arrival_runways": [
+        {
+          "airport": "KDAY",
+          "runway": "6L"
+        }
+      ],
+      "departure_runways": [
+        {
+          "airport": "KDAY",
+          "runway": "6R",
+          "rate": 2,
+          "category": "North"
+        },
+        {
+          "airport": "KDAY",
+          "runway": "6R",
+          "rate": 2,
+          "category": "East"
+        },
+        {
+          "airport": "KDAY",
+          "runway": "6R",
+          "rate": 3,
+          "category": "South"
+        },
+        {
+          "airport": "KDAY",
+          "runway": "36",
+          "rate": 3,
+          "category": "West"
+        }
+      ],
+      "inbound_rates": {
+        "DANEI3": {
+          "KDAY": 3
+        },
+        "DAY.S": {
+          "KDAY": 3
+        },
+        "DAY.N": {
+          "KDAY": 2
+        },
+        "DAY.W": {
+          "KDAY": 1
+        }
+      },
+      "wind": {
+        "direction": "010-130"
+      },
+      "default_maps": [
+        "Dayton RWY 6s",
+        "CMH 3 NM MVA",
+        "CMH Class C/D"
+      ]
+    }
+  }
+}

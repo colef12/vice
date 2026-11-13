@@ -1,0 +1,1403 @@
+{
+  "name": "Columbus Area",
+  "tracon": "CMH",
+  "default_scenario": "CMH - West Flow (28s)",
+  "airports": {
+    "KCMH": {
+      "approaches": {
+        "I0L": {
+          "cifp_id": "I10L"
+        },
+        "I0R": {
+          "cifp_id": "I10R"
+        },
+        "I8L": {
+          "cifp_id": "I28L"
+        },
+        "I8R": {
+          "cifp_id": "I28R"
+        },
+        "R0L": {
+          "cifp_id": "RY10L"
+        },
+        "R0R": {
+          "cifp_id": "RY10R"
+        },
+        "R8L": {
+          "cifp_id": "RY28L"
+        },
+        "R8R": {
+          "cifp_id": "RY28R"
+        },
+        "Z0L": {
+          "cifp_id": "RZ10L"
+        },
+        "Z0R": {
+          "cifp_id": "RZ10R"
+        },
+        "Z8L": {
+          "cifp_id": "RZ28L"
+        },
+        "Z8R": {
+          "cifp_id": "RZ28R"
+        }
+      },
+      "departure_routes": {
+        "28R": {
+          "RDBUV": {
+            "cleared_altitude": 5000,
+            "waypoints": "KCMH-10L/h320"
+          },
+          "OWEBO": {
+            "cleared_altitude": 5000,
+            "waypoints": "KCMH-10L/h340"
+          },
+          "PKACZ": {
+            "cleared_altitude": 5000,
+            "waypoints": "KCMH-10L/h285"
+          },
+          "POBSE": {
+            "cleared_altitude": 5000,
+            "waypoints": "KCMH-10L/h240"
+          }
+        },
+        "28L": {
+          "POBSE": {
+            "cleared_altitude": 5000,
+            "waypoints": "KCMH-10R/h230"
+          },
+          "PKACZ": {
+            "cleared_altitude": 5000,
+            "waypoints": "KCMH-10R/h270"
+          },
+          "RDBUV": {
+            "cleared_altitude": 5000,
+            "waypoints": "KCMH-10R/h310"
+          },
+          "OWEBO": {
+            "cleared_altitude": 5000,
+            "waypoints": "KCMH-10R/h320"
+          }
+        },
+        "10L": {
+          "RDBUV": {
+            "cleared_altitude": 5000,
+            "waypoints": "KCMH-28R/h040"
+          },
+          "OWEBO": {
+            "cleared_altitude": 5000,
+            "waypoints": "KCMH-28R/h090"
+          },
+          "PKACZ": {
+            "cleared_altitude": 5000,
+            "waypoints": "KCMH-28R/h010"
+          },
+          "POBSE": {
+            "cleared_altitude": 5000,
+            "waypoints": "KCMH-28R/h140"
+          }
+        },
+        "10R": {
+          "POBSE": {
+            "cleared_altitude": 5000,
+            "waypoints": "KCMH-28L/h150"
+          },
+          "PKACZ": {
+            "cleared_altitude": 5000,
+            "waypoints": "KCMH-28L/h190"
+          },
+          "OWEBO": {
+            "cleared_altitude": 5000,
+            "waypoints": "KCMH-28L/h120"
+          },
+          "RDBUV": {
+            "cleared_altitude": 5000,
+            "waypoints": "KCMH-28L/h060"
+          }
+        }
+      },
+      "departures": [
+        {
+          "destination": "KDTW",
+          "exit": "RDBUV",
+          "waypoints": "RDBUV NOWZU EEEZI BONZZ BONZZ2",
+          "airlines": [
+            {
+              "icao": "DAL"
+            },
+            {
+              "icao": "EDV"
+            },
+            {
+              "icao": "SKW"
+            }
+          ],
+          "altitude": [
+            15000,
+            17000
+          ]
+        },
+        {
+          "destination": "KEWR",
+          "exit": "RDBUV",
+          "waypoints": "RDBUV NOWZU WWSHR Q29 DORET J584 SLT FQM3",
+          "airlines": [
+            {
+              "icao": "UAL"
+            },
+            {
+              "icao": "SKW"
+            }
+          ]
+        },
+        {
+          "destination": "KLGA",
+          "exit": "RDBUV",
+          "waypoints": "RDBUV WWSHR SPYDY Q186 WEVEL ETG MIP4",
+          "airlines": [
+            {
+              "icao": "AAL"
+            },
+            {
+              "icao": "DAL"
+            },
+            {
+              "icao": "RPA"
+            },
+            {
+              "icao": "SWA"
+            }
+          ]
+        },
+        {
+          "destination": "KJFK",
+          "exit": "RDBUV",
+          "waypoints": "RDBUV NOWZU DJB JHW Q476 WLKES PUCKY1",
+          "airlines": [
+            {
+              "icao": "DAL"
+            },
+            {
+              "icao": "EDV"
+            }
+          ]
+        },
+        {
+          "destination": "CYYZ",
+          "exit": "RDBUV",
+          "waypoints": "RDBUV NOWZU JUSEP DJB QWERI NUBER6",
+          "airlines": [
+            {
+              "icao": "JZA"
+            },
+            {
+              "icao": "ACA"
+            }
+          ]
+        },
+        {
+          "destination": "KTEB",
+          "exit": "RDBUV",
+          "waypoints": "RDBUV NOWZU DJB JHW LVZ5",
+          "airlines": [
+            {
+              "icao": "EJA"
+            },
+            {
+              "icao": "LXJ"
+            }
+          ]
+        },
+        {
+          "destination": "KBOS",
+          "exit": "OWEBO",
+          "waypoints": "OWEBO HLG WIGGZ Q190 PONCT JFUND2",
+          "airlines": [
+            {
+              "icao": "SWA"
+            },
+            {
+              "icao": "DAL"
+            },
+            {
+              "icao": "AAL"
+            }
+          ]
+        },
+        {
+          "destination": "KBWI",
+          "exit": "OWEBO",
+          "waypoints": "OWEBO NUSMM ANTHM5",
+          "airlines": [
+            {
+              "icao": "SWA"
+            }
+          ]
+        },
+        {
+          "destination": "KDCA",
+          "exit": "OWEBO",
+          "waypoints": "OWEBO AIR BUCKO FRDMM7",
+          "airlines": [
+            {
+              "icao": "AAL"
+            },
+            {
+              "icao": "RPA"
+            },
+            {
+              "icao": "DAL"
+            }
+          ]
+        },
+        {
+          "destination": "KPHL",
+          "exit": "OWEBO",
+          "waypoints": "OWEBO HLG JST BOJID4",
+          "airlines": [
+            {
+              "icao": "AAL"
+            },
+            {
+              "icao": "PDT"
+            }
+          ]
+        },
+        {
+          "destination": "KIAD",
+          "exit": "OWEBO",
+          "waypoints": "OWEBO AIR MGW GIBBZ6",
+          "airlines": [
+            {
+              "icao": "UAL"
+            },
+            {
+              "icao": "SKW"
+            }
+          ]
+        },
+        {
+          "destination": "KATL",
+          "exit": "POBSE",
+          "waypoints": "POBSE OHIOS KTRYN ONDRE1",
+          "airlines": [
+            {
+              "icao": "DAL"
+            },
+            {
+              "icao": "SWA"
+            },
+            {
+              "icao": "EDV"
+            }
+          ]
+        },
+        {
+          "destination": "KBNA",
+          "exit": "POBSE",
+          "waypoints": "POBSE OHIOS YOCKY CUTRR PASLY5",
+          "airlines": [
+            {
+              "icao": "SWA"
+            }
+          ]
+        },
+        {
+          "destination": "KCLT",
+          "exit": "POBSE",
+          "waypoints": "POBSE OHIOS TAFTT PARQR6",
+          "airlines": [
+            {
+              "icao": "AAL"
+            },
+            {
+              "icao": "PDT"
+            },
+            {
+              "icao": "ENY"
+            }
+          ]
+        },
+        {
+          "destination": "KMCO",
+          "exit": "POBSE",
+          "waypoints": "POBSE OHIOS HVQ Q147 BURGG IRQ WHYYT GRNCH5",
+          "airlines": [
+            {
+              "icao": "SWA"
+            },
+            {
+              "icao": "FFT"
+            },
+            {
+              "icao": "MXY"
+            }
+          ]
+        },
+        {
+          "destination": "KTPA",
+          "exit": "POBSE",
+          "waypoints": "POBSE OHIOS IRQ WIGVO TEUFL BAAMF DADES2",
+          "airlines": [
+            {
+              "icao": "SWA"
+            },
+            {
+              "icao": "MXY"
+            }
+          ]
+        },
+        {
+          "destination": "KFLL",
+          "exit": "POBSE",
+          "waypoints": "POBSE OHIOS HVQ Q147 BURGG QUIWE Q93 FISHO Q93 GURGE Q93 PRMUS CUUDA3",
+          "airlines": [
+            {
+              "icao": "SWA"
+            },
+            {
+              "icao": "NKS"
+            }
+          ]
+        },
+        {
+          "destination": "KRSW",
+          "exit": "POBSE",
+          "waypoints": "POBSE OHIOS DOOGE IRQ CYNTA SHFTY6",
+          "airlines": [
+            {
+              "icao": "SWA"
+            },
+            {
+              "icao": "MXY"
+            }
+          ]
+        },
+        {
+          "destination": "KMIA",
+          "exit": "POBSE",
+          "waypoints": "POBSE OHIOS HVQ Q147 BURGG QUIWE Q93 FISHO Q93 GURGE Q93 DEBRL CSTAL3",
+          "airlines": [
+            {
+              "icao": "AAL"
+            }
+          ]
+        },
+        {
+          "destination": "KORD",
+          "exit": "PKACZ",
+          "waypoints": "PKACZ TARRY FWA WATSN4",
+          "airlines": [
+            {
+              "icao": "UAL"
+            },
+            {
+              "icao": "AAL"
+            },
+            {
+              "icao": "SKW"
+            },
+            {
+              "icao": "ENY"
+            }
+          ]
+        },
+        {
+          "destination": "KMDW",
+          "exit": "PKACZ",
+          "waypoints": "PKACZ TARRY ROD FWA PANGG7",
+          "airlines": [
+            {
+              "icao": "SWA"
+            }
+          ]
+        },
+        {
+          "destination": "KMSP",
+          "exit": "PKACZ",
+          "waypoints": "PKACZ TARRY ROD FWA KAMMA KKILR4",
+          "airlines": [
+            {
+              "icao": "DAL"
+            },
+            {
+              "icao": "SKW"
+            }
+          ]
+        },
+        {
+          "destination": "KDEN",
+          "exit": "PKACZ",
+          "waypoints": "PKACZ TARRY ROD EDENS DSM OBH BRWRY LAWGR4",
+          "airlines": [
+            {
+              "icao": "UAL"
+            },
+            {
+              "icao": "SWA"
+            },
+            {
+              "icao": "FFT"
+            }
+          ]
+        },
+        {
+          "destination": "KDFW",
+          "exit": "PKACZ",
+          "waypoints": "PKACZ TARRY PXV J131 LIT FEWWW SEEVR4",
+          "airlines": [
+            {
+              "icao": "AAL"
+            }
+          ]
+        },
+        {
+          "destination": "KDAL",
+          "exit": "PKACZ",
+          "waypoints": "PKACZ TARRY DQN TTH FAM FSM CAMAL HIBIL3",
+          "airlines": [
+            {
+              "icao": "SWA"
+            }
+          ]
+        },
+        {
+          "destination": "KAUS",
+          "exit": "PKACZ",
+          "waypoints": "PKACZ TARRY OWB JBR LIT TXK WINDU SEWZY6",
+          "airlines": [
+            {
+              "icao": "SWA"
+            }
+          ]
+        },
+        {
+          "destination": "KHOU",
+          "exit": "PKACZ",
+          "waypoints": "PKACZ TARRY DQN HEVAN SIDAE Q29 HARES SWEUP WAPPL7",
+          "airlines": [
+            {
+              "icao": "SWA"
+            }
+          ]
+        },
+        {
+          "destination": "KIAH",
+          "exit": "PKACZ",
+          "waypoints": "PKACZ TARRY CVG TIIDE Q31 UJM Q31 DHART SWEUP ZEEKK3",
+          "airlines": [
+            {
+              "icao": "UAL"
+            }
+          ]
+        },
+        {
+          "destination": "KLAS",
+          "exit": "PKACZ",
+          "waypoints": "PKACZ TARRY CREEP J80 VHP AXC STJ TKO DANDD KD54U TAYLR MTJ DEANN TYEGR CHOWW4",
+          "airlines": [
+            {
+              "icao": "SWA"
+            }
+          ]
+        },
+        {
+          "destination": "KPHX",
+          "exit": "PKACZ",
+          "waypoints": "PKACZ TARRY CREEP TTH DIRTT TYGER KK51E RASCL KK42Y KENTO ZUN EAGUL6",
+          "airlines": [
+            {
+              "icao": "SWA"
+            },
+            {
+              "icao": "AAL"
+            }
+          ]
+        },
+        {
+          "destination": "KSTL",
+          "exit": "PKACZ",
+          "waypoints": "PKACZ TARRY DQN VHP AARCH2",
+          "airlines": [
+            {
+              "icao": "SWA"
+            }
+          ]
+        }
+      ],
+      "exit_categories": {
+        "RDBUV": "North",
+        "OWEBO": "East",
+        "POBSE": "South",
+        "PKACZ": "West"
+      },
+      "omit_arrival_scratchpad": true,
+      "tower_list": 1
+    },
+    "KLCK": {
+      "approaches": {
+        "I5L": {
+          "cifp_id": "I5L"
+        },
+        "I3L": {
+          "cifp_id": "I23L"
+        },
+        "R5L": {
+          "cifp_id": "R5L"
+        },
+        "R5R": {
+          "cifp_id": "R5R"
+        },
+        "R3L": {
+          "cifp_id": "R23L"
+        },
+        "R3R": {
+          "cifp_id": "R23R"
+        }
+      },
+      "departure_routes": {
+        "23L": {
+          "POBSE": {
+            "cleared_altitude": 5000,
+            "waypoints": "KLCK-5R/h200"
+          },
+          "PKACZ": {
+            "cleared_altitude": 5000,
+            "waypoints": "KLCK-5R/h250"
+          }
+        },
+        "5R": {
+          "POBSE": {
+            "cleared_altitude": 5000,
+            "waypoints": "KLCK-23L/h110"
+          },
+          "PKACZ": {
+            "cleared_altitude": 5000,
+            "waypoints": "KLCK-23L/h320"
+          }
+        }
+      },
+      "departures": [
+        {
+          "destination": "KSFB",
+          "exit": "POBSE",
+          "waypoints": "POBSE OHIOS HVQ Q147 BURGG IRQ WHYYT GRNCH5",
+          "airlines": [
+            {
+              "icao": "AAY"
+            }
+          ]
+        },
+        {
+          "destination": "KPIE",
+          "exit": "POBSE",
+          "waypoints": "POBSE OHIOS IRQ WIGVO TEUFL BAAMF DADES2",
+          "airlines": [
+            {
+              "icao": "AAY"
+            }
+          ]
+        },
+        {
+          "destination": "KMEM",
+          "exit": "PKACZ",
+          "waypoints": "PKACZ TARRY PXV",
+          "airlines": [
+            {
+              "icao": "FDX"
+            }
+          ]
+        },
+        {
+          "destination": "KSDF",
+          "exit": "PKACZ",
+          "waypoints": "PKACZ TARRY CVG",
+          "airlines": [
+            {
+              "icao": "UPS"
+            }
+          ]
+        }
+      ],
+      "exit_categories": {
+        "POBSE": "South",
+        "PKACZ": "West"
+      },
+      "hold_for_release": true,
+      "tower_list": 2,
+      "vfr": {
+        "random_routes": {
+          "rate": 0.6,
+          "fleet": "lightGA"
+        }
+      }
+    },
+    "KOSU": {
+      "approaches": {
+        "I9R": {
+          "cifp_id": "I9R"
+        },
+        "R9R": {
+          "cifp_id": "R9R"
+        },
+        "R7L": {
+          "cifp_id": "R27L"
+        }
+      },
+      "departure_routes": {
+        "27L": {
+          "RDBUV": {
+            "cleared_altitude": 5000,
+            "waypoints": "KOSU-9R/h300"
+          },
+          "POBSE": {
+            "cleared_altitude": 5000,
+            "waypoints": "KOSU-9R/h240"
+          },
+          "PKACZ": {
+            "cleared_altitude": 5000,
+            "waypoints": "KOSU-9R/h270"
+          },
+          "OWEBO": {
+            "cleared_altitude": 5000,
+            "waypoints": "KOSU-9R/h330"
+          }
+        },
+        "9R": {
+          "RDBUV": {
+            "cleared_altitude": 5000,
+            "waypoints": "KOSU-27L/h030"
+          },
+          "POBSE": {
+            "cleared_altitude": 5000,
+            "waypoints": "KOSU-27L/h150"
+          },
+          "PKACZ": {
+            "cleared_altitude": 5000,
+            "waypoints": "KOSU-27L/h330"
+          },
+          "OWEBO": {
+            "cleared_altitude": 5000,
+            "waypoints": "KOSU-27L/h090"
+          }
+        }
+      },
+      "departures": [
+        {
+          "destination": "KTEB",
+          "exit": "RDBUV",
+          "waypoints": "RDBUV NOWZU DJB JHW LVZ5",
+          "airlines": [
+            {
+              "icao": "EJA"
+            },
+            {
+              "icao": "LXJ"
+            }
+          ]
+        },
+        {
+          "destination": "KPBI",
+          "exit": "POBSE",
+          "waypoints": "POBSE OHIOS HVQ Q147 BURGG IRQ",
+          "airlines": [
+            {
+              "icao": "EJA"
+            }
+          ]
+        },
+        {
+          "destination": "KMDW",
+          "exit": "PKACZ",
+          "waypoints": "PKACZ TARRY ROD FWA PANGG7",
+          "airlines": [
+            {
+              "icao": "EJA"
+            }
+          ]
+        }
+      ],
+      "exit_categories": {
+        "RDBUV": "North",
+        "OWEBO": "East",
+        "POBSE": "South",
+        "PKACZ": "West"
+      },
+      "hold_for_release": true,
+      "tower_list": 3,
+      "vfr": {
+        "random_routes": {
+          "rate": 3.0,
+          "fleet": "lightGA"
+        }
+      }
+    },
+    "KTZR": {
+      "vfr": {
+        "random_routes": {
+          "rate": 2.0,
+          "fleet": "lightGA"
+        }
+      }
+    },
+    "KLHQ": {
+      "vfr": {
+        "random_routes": {
+          "rate": 1.2,
+          "fleet": "lightGA"
+        }
+      }
+    },
+    "KDLZ": {
+      "vfr": {
+        "random_routes": {
+          "rate": 1.0,
+          "fleet": "lightGA"
+        }
+      }
+    },
+    "KMRT": {
+      "vfr": {
+        "random_routes": {
+          "rate": 0.6,
+          "fleet": "lightGA"
+        }
+      }
+    },
+    "KVTA": {
+      "vfr": {
+        "random_routes": {
+          "rate": 0.8,
+          "fleet": "lightGA"
+        }
+      }
+    },
+    "KUYF": {
+      "vfr": {
+        "random_routes": {
+          "rate": 0.4,
+          "fleet": "lightGA"
+        }
+      }
+    },
+    "KMNN": {
+      "vfr": {
+        "random_routes": {
+          "rate": 0.5,
+          "fleet": "lightGA"
+        }
+      }
+    }
+  },
+  "inbound_flows": {
+    "DUBLN1": {
+      "arrivals": [
+        {
+          "star": "DUBLN1",
+          "spawn": "CHDRS@0.0",
+          "initial_controller": "O03",
+          "initial_altitude": 13000,
+          "initial_speed": 280,
+          "is_rnav": true,
+          "expect_approach": null,
+          "airports": [
+            "KCMH",
+            "KOSU"
+          ],
+          "airlines": {
+            "KCMH": [
+              {
+                "icao": "UAL",
+                "airport": "KORD"
+              },
+              {
+                "icao": "AAL",
+                "airport": "KORD"
+              },
+              {
+                "icao": "SKW",
+                "airport": "KORD"
+              },
+              {
+                "icao": "ENY",
+                "airport": "KORD"
+              },
+              {
+                "icao": "SWA",
+                "airport": "KMDW"
+              },
+              {
+                "icao": "DAL",
+                "airport": "KMSP"
+              },
+              {
+                "icao": "UAL",
+                "airport": "KDEN"
+              },
+              {
+                "icao": "SWA",
+                "airport": "KDEN"
+              },
+              {
+                "icao": "FFT",
+                "airport": "KDEN"
+              }
+            ],
+            "KOSU": [
+              {
+                "icao": "EJA",
+                "airport": "KMDW"
+              }
+            ]
+          },
+          "flight_strip_route": "/. CHDRS.DUBLN1"
+        },
+        {
+          "star": "DUBLN1",
+          "spawn": "FBC@0.4",
+          "initial_controller": "O03",
+          "initial_altitude": 11000,
+          "initial_speed": 280,
+          "is_rnav": true,
+          "expect_approach": null,
+          "airports": [
+            "KCMH"
+          ],
+          "airlines": {
+            "KCMH": [
+              {
+                "icao": "DAL",
+                "airport": "KDTW"
+              },
+              {
+                "icao": "EDV",
+                "airport": "KDTW"
+              },
+              {
+                "icao": "SKW",
+                "airport": "KDTW"
+              }
+            ]
+          },
+          "flight_strip_route": "/. FBC.DUBLN1"
+        },
+        {
+          "star": "DUBLN1",
+          "spawn": "CYRAH@0.0",
+          "initial_controller": "C32",
+          "initial_altitude": 13000,
+          "initial_speed": 280,
+          "is_rnav": true,
+          "expect_approach": null,
+          "airports": [
+            "KCMH"
+          ],
+          "airlines": {
+            "KCMH": [
+              {
+                "icao": "SWA",
+                "airport": "KSTL"
+              },
+              {
+                "icao": "SWA",
+                "airport": "KLAS"
+              },
+              {
+                "icao": "SWA",
+                "airport": "KPHX"
+              },
+              {
+                "icao": "AAL",
+                "airport": "KPHX"
+              }
+            ]
+          },
+          "flight_strip_route": "/. CYRAH.DUBLN1"
+        }
+      ]
+    },
+    "CBUSS2": {
+      "arrivals": [
+        {
+          "star": "CBUSS2",
+          "spawn": "WAAHU@0.0",
+          "initial_controller": "O04",
+          "initial_altitude": 13000,
+          "initial_speed": 280,
+          "is_rnav": true,
+          "expect_approach": null,
+          "airports": [
+            "KCMH"
+          ],
+          "airlines": {
+            "KCMH": [
+              {
+                "icao": "ACA",
+                "airport": "CYYZ"
+              },
+              {
+                "icao": "JZA",
+                "airport": "CYYZ"
+              }
+            ]
+          },
+          "flight_strip_route": "/. WAAHU.CBUSS2"
+        }
+      ]
+    },
+    "CLPRR4": {
+      "arrivals": [
+        {
+          "star": "CLPRR4",
+          "spawn": "MEYRR@0.3",
+          "initial_controller": "O20",
+          "initial_altitude": 17000,
+          "initial_speed": 280,
+          "is_rnav": true,
+          "expect_approach": null,
+          "airports": [
+            "KCMH",
+            "KOSU"
+          ],
+          "airlines": {
+            "KCMH": [
+              {
+                "icao": "AAL",
+                "airport": "KLGA"
+              },
+              {
+                "icao": "DAL",
+                "airport": "KLGA"
+              },
+              {
+                "icao": "RPA",
+                "airport": "KLGA"
+              },
+              {
+                "icao": "SWA",
+                "airport": "KLGA"
+              },
+              {
+                "icao": "UAL",
+                "airport": "KEWR"
+              },
+              {
+                "icao": "DAL",
+                "airport": "KJFK"
+              },
+              {
+                "icao": "SWA",
+                "airport": "KBOS"
+              },
+              {
+                "icao": "AAL",
+                "airport": "KBOS"
+              },
+              {
+                "icao": "AAL",
+                "airport": "KPHL"
+              },
+              {
+                "icao": "PDT",
+                "airport": "KPHL"
+              }
+            ],
+            "KOSU": [
+              {
+                "icao": "EJA",
+                "airport": "KTEB"
+              },
+              {
+                "icao": "LXJ",
+                "airport": "KTEB"
+              }
+            ]
+          },
+          "flight_strip_route": "/. MEYRR.CLPRR4"
+        },
+        {
+          "star": "CLPRR4",
+          "spawn": "ZANDR@0.4",
+          "initial_controller": "O20",
+          "initial_altitude": 14000,
+          "initial_speed": 280,
+          "is_rnav": true,
+          "expect_approach": null,
+          "airports": [
+            "KCMH"
+          ],
+          "airlines": {
+            "KCMH": [
+              {
+                "icao": "EJA",
+                "airport": "KTEB"
+              },
+              {
+                "icao": "LXJ",
+                "airport": "KTEB"
+              }
+            ]
+          },
+          "flight_strip_route": "/. ZANDR.CLPRR4"
+        }
+      ]
+    },
+    "SCRLT3": {
+      "arrivals": [
+        {
+          "star": "SCRLT3",
+          "spawn": "HACKS@0.7",
+          "initial_controller": "C24",
+          "initial_altitude": 16000,
+          "initial_speed": 280,
+          "is_rnav": true,
+          "expect_approach": null,
+          "airports": [
+            "KCMH"
+          ],
+          "airlines": {
+            "KCMH": [
+              {
+                "icao": "AAL",
+                "airport": "KDCA"
+              },
+              {
+                "icao": "RPA",
+                "airport": "KDCA"
+              },
+              {
+                "icao": "SWA",
+                "airport": "KBWI"
+              },
+              {
+                "icao": "UAL",
+                "airport": "KIAD"
+              },
+              {
+                "icao": "SKW",
+                "airport": "KIAD"
+              }
+            ]
+          },
+          "flight_strip_route": "/. HACKS.SCRLT3"
+        },
+        {
+          "star": "SCRLT3",
+          "spawn": "ZEDNO@0.2",
+          "initial_controller": "C24",
+          "initial_altitude": 15000,
+          "initial_speed": 280,
+          "is_rnav": true,
+          "expect_approach": null,
+          "airports": [
+            "KCMH",
+            "KLCK"
+          ],
+          "airlines": {
+            "KCMH": [
+              {
+                "icao": "DAL",
+                "airport": "KATL"
+              },
+              {
+                "icao": "SWA",
+                "airport": "KATL"
+              },
+              {
+                "icao": "AAL",
+                "airport": "KCLT"
+              },
+              {
+                "icao": "PDT",
+                "airport": "KCLT"
+              },
+              {
+                "icao": "SWA",
+                "airport": "KMCO"
+              },
+              {
+                "icao": "FFT",
+                "airport": "KMCO"
+              },
+              {
+                "icao": "MXY",
+                "airport": "KTPA"
+              },
+              {
+                "icao": "SWA",
+                "airport": "KTPA"
+              },
+              {
+                "icao": "SWA",
+                "airport": "KFLL"
+              },
+              {
+                "icao": "NKS",
+                "airport": "KFLL"
+              },
+              {
+                "icao": "AAL",
+                "airport": "KMIA"
+              },
+              {
+                "icao": "SWA",
+                "airport": "KRSW"
+              }
+            ],
+            "KLCK": [
+              {
+                "icao": "AAY",
+                "airport": "KSFB"
+              },
+              {
+                "icao": "AAY",
+                "airport": "KPIE"
+              },
+              {
+                "icao": "AAY",
+                "airport": "KPGD"
+              }
+            ]
+          },
+          "flight_strip_route": "/. ZEDNO.SCRLT3"
+        }
+      ]
+    },
+    "JAKTZ2": {
+      "arrivals": [
+        {
+          "star": "JAKTZ2",
+          "spawn": "PODGY@0.2",
+          "initial_controller": "C30",
+          "initial_altitude": 17000,
+          "initial_speed": 280,
+          "is_rnav": true,
+          "expect_approach": null,
+          "airports": [
+            "KCMH",
+            "KLCK"
+          ],
+          "airlines": {
+            "KCMH": [
+              {
+                "icao": "SWA",
+                "airport": "KBNA"
+              },
+              {
+                "icao": "SWA",
+                "airport": "KHOU"
+              },
+              {
+                "icao": "AAL",
+                "airport": "KDFW"
+              },
+              {
+                "icao": "SWA",
+                "airport": "KDAL"
+              },
+              {
+                "icao": "SWA",
+                "airport": "KAUS"
+              },
+              {
+                "icao": "UAL",
+                "airport": "KIAH"
+              }
+            ],
+            "KLCK": [
+              {
+                "icao": "FDX",
+                "airport": "KMEM"
+              },
+              {
+                "icao": "UPS",
+                "airport": "KSDF"
+              }
+            ]
+          },
+          "flight_strip_route": "/. PODGY.JAKTZ2"
+        }
+      ]
+    }
+  },
+  "scenarios": {
+    "CMH - West Flow (28s)": {
+      "description": "Columbus TRACON, CMH sectors combined on 1N. Land 28L/28R, depart 28R (North/East gates) and 28L (South/West gates). LCK 23L, OSU 27L satellites.",
+      "configuration": "CW",
+      "center": "KCMH",
+      "range": 40,
+      "arrival_runways": [
+        {
+          "airport": "KCMH",
+          "runway": "28L"
+        },
+        {
+          "airport": "KCMH",
+          "runway": "28R"
+        },
+        {
+          "airport": "KLCK",
+          "runway": "23L"
+        },
+        {
+          "airport": "KOSU",
+          "runway": "27L"
+        }
+      ],
+      "departure_runways": [
+        {
+          "airport": "KCMH",
+          "runway": "28R",
+          "rate": 5,
+          "category": "North"
+        },
+        {
+          "airport": "KCMH",
+          "runway": "28R",
+          "rate": 4,
+          "category": "East"
+        },
+        {
+          "airport": "KCMH",
+          "runway": "28L",
+          "rate": 5,
+          "category": "South"
+        },
+        {
+          "airport": "KCMH",
+          "runway": "28L",
+          "rate": 4,
+          "category": "West"
+        },
+        {
+          "airport": "KLCK",
+          "runway": "23L",
+          "rate": 1
+        },
+        {
+          "airport": "KOSU",
+          "runway": "27L",
+          "rate": 1
+        }
+      ],
+      "inbound_rates": {
+        "DUBLN1": {
+          "KCMH": 7,
+          "KOSU": 0.5
+        },
+        "CBUSS2": {
+          "KCMH": 2
+        },
+        "CLPRR4": {
+          "KCMH": 5,
+          "KOSU": 0.5
+        },
+        "SCRLT3": {
+          "KCMH": 5,
+          "KLCK": 1
+        },
+        "JAKTZ2": {
+          "KCMH": 4,
+          "KLCK": 1
+        }
+      },
+      "wind": {
+        "direction": "200-340"
+      },
+      "default_maps": [
+        "Columbus RWY 28s",
+        "CMH 3 NM MVA",
+        "CMH Class C/D"
+      ]
+    },
+    "CMH - East Flow (10s)": {
+      "description": "Columbus TRACON, CMH sectors combined on 1N. Land 10R/10L, depart 10L (North/East gates) and 10R (South/West gates). LCK 5R, OSU 9R satellites.",
+      "configuration": "CE",
+      "center": "KCMH",
+      "range": 40,
+      "arrival_runways": [
+        {
+          "airport": "KCMH",
+          "runway": "10R"
+        },
+        {
+          "airport": "KCMH",
+          "runway": "10L"
+        },
+        {
+          "airport": "KLCK",
+          "runway": "5R"
+        },
+        {
+          "airport": "KOSU",
+          "runway": "9R"
+        }
+      ],
+      "departure_runways": [
+        {
+          "airport": "KCMH",
+          "runway": "10L",
+          "rate": 5,
+          "category": "North"
+        },
+        {
+          "airport": "KCMH",
+          "runway": "10L",
+          "rate": 4,
+          "category": "East"
+        },
+        {
+          "airport": "KCMH",
+          "runway": "10R",
+          "rate": 5,
+          "category": "South"
+        },
+        {
+          "airport": "KCMH",
+          "runway": "10R",
+          "rate": 4,
+          "category": "West"
+        },
+        {
+          "airport": "KLCK",
+          "runway": "5R",
+          "rate": 1
+        },
+        {
+          "airport": "KOSU",
+          "runway": "9R",
+          "rate": 1
+        }
+      ],
+      "inbound_rates": {
+        "DUBLN1": {
+          "KCMH": 7,
+          "KOSU": 0.5
+        },
+        "CBUSS2": {
+          "KCMH": 2
+        },
+        "CLPRR4": {
+          "KCMH": 5,
+          "KOSU": 0.5
+        },
+        "SCRLT3": {
+          "KCMH": 5,
+          "KLCK": 1
+        },
+        "JAKTZ2": {
+          "KCMH": 4,
+          "KLCK": 1
+        }
+      },
+      "wind": {
+        "direction": "020-160"
+      },
+      "default_maps": [
+        "Columbus RWY 10s",
+        "CMH 3 NM MVA",
+        "CMH Class C/D"
+      ]
+    }
+  }
+}
