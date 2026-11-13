@@ -135,17 +135,17 @@ func main() {
 
 const xmlTemplate = `<?xml version='1.0' encoding='utf-8'?>
 <Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
-  <Product Name='Vice'
+  <Product Name='Vice Custom'
 	   Manufacturer='Matt Pharr'
 	   Id='*'
-	   UpgradeCode='A10E3C66-BA55-406A-B4E2-586D7108D622'
+	   UpgradeCode='C489A293-DCD6-4299-B6FA-F4613254CCF0'
 	   Language='1033'
 	   Codepage='1252'
 	   Version='{{.Version}}'
 	   >
     <Package Id='*'
     	     Keywords='Installer'
-	     Description="Vice Installer"
+	     Description="Vice Custom Installer"
 	     Manufacturer='Matt Pharr'
 	     InstallerVersion='100'
 	     Languages='1033'
@@ -153,51 +153,51 @@ const xmlTemplate = `<?xml version='1.0' encoding='utf-8'?>
 	     SummaryCodepage='1252'
 	     />
 
-    <MajorUpgrade AllowSameVersionUpgrades="yes" DowngradeErrorMessage="A later version of Vice is already installed. Setup will now exit." />
+    <MajorUpgrade AllowSameVersionUpgrades="yes" DowngradeErrorMessage="A later version of Vice Custom is already installed. Setup will now exit." />
 
     <MediaTemplate EmbedCab="yes" />
 
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="ProgramFilesFolder">
-        <Directory Id="INSTALLFOLDER" Name="Vice">
-          <Component Id="ViceExe" Guid='A10E3C66-BA55-406A-B4E2-586D7108D622'>
+        <Directory Id="INSTALLFOLDER" Name="Vice Custom">
+          <Component Id="ViceExe" Guid='3CFBAA76-3F1B-407A-8700-2937DE63645C'>
             <File KeyPath="yes" Name="Vice.exe" Source="Vice.exe"></File>
           </Component>
-          <Component Id="BackshopExe" Guid='5f6e7d8c-9b0a-4c1d-8e2f-3a4b5c6d7e8f'>
+          <Component Id="BackshopExe" Guid='68A2028E-D3CF-4082-B40E-821EB14447CE'>
             <File KeyPath="yes" Name="backshop.exe" Source="backshop.exe"></File>
           </Component>
-          <Component Id="Crc2viceExe" Guid='c1d2e3f4-a5b6-4789-9c0d-1e2f3a4b5c6d'>
+          <Component Id="Crc2viceExe" Guid='1C32032E-ED9E-4288-8611-76A9B6A965D2'>
             <File KeyPath="yes" Name="crc2vice.exe" Source="crc2vice.exe"></File>
           </Component>
-          <Component Id="Dat2viceExe" Guid='d2e3f4a5-b6c7-489a-9d0e-1f2a3b4c5d6e'>
+          <Component Id="Dat2viceExe" Guid='8E08CC21-D9FF-4576-91B9-B371B55276AB'>
             <File KeyPath="yes" Name="dat2vice.exe" Source="dat2vice.exe"></File>
           </Component>
-          <Component Id="ViceserverExe" Guid='9b4f1a72-7c4e-4b5a-8e1d-3a8f7c6e5d4f'>
+          <Component Id="ViceserverExe" Guid='F0D03492-717B-46EB-9259-893B1CE012C0'>
             <File KeyPath="yes" Name="viceserver.exe" Source="viceserver.exe"></File>
           </Component>
-          <Component Id="SDLDLL" Guid='85535501-4016-47c4-9466-846df4cf49a5'>
+          <Component Id="SDLDLL" Guid='55630581-E376-4A52-8AA1-0EDD29C887E2'>
             <File KeyPath="yes" Source="windows/SDL2.dll"></File>
           </Component>
-          <Component Id="gccseh" Guid='68f22a6b-1710-4987-820c-b5cbad791dbe'>
+          <Component Id="gccseh" Guid='857E2403-D2A6-410C-8F22-9CD7E8536BF5'>
             <File KeyPath="yes" Source="windows/libgcc_s_seh-1.dll"></File>
           </Component>
-          <Component Id="libstdcpp" Guid='a7080cc5-8ddf-45b9-bf09-466652cc8b06'>
+          <Component Id="libstdcpp" Guid='C590AA03-5D35-4A7C-ADD3-BD5E40B30915'>
             <File KeyPath="yes" Source="windows/libstdc++-6.dll"></File>
           </Component>
-          <Component Id="libwinpthread" Guid='b2c3d4e5-f6a7-4b89-0c1d-2e3f4a5b6c7d'>
+          <Component Id="libwinpthread" Guid='E164FA27-C9CC-46CC-863B-9405B62BFE58'>
             <File KeyPath="yes" Source="windows/libwinpthread-1.dll"></File>
           </Component>
-          <Component Id="sherpaonnx" Guid='f3a1b2c4-d5e6-4f78-9a0b-1c2d3e4f5a6b'>
+          <Component Id="sherpaonnx" Guid='6AD0F03C-7364-4491-8FA0-CE916E7E60AC'>
             <File KeyPath="yes" Source="windows/sherpa-onnx-c-api.dll"></File>
           </Component>
-          <Component Id="onnxruntime" Guid='a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d'>
+          <Component Id="onnxruntime" Guid='9FBE5C65-00A8-465C-B4F0-010BAC3CA02D'>
             <File KeyPath="yes" Source="windows/onnxruntime.dll"></File>
           </Component>
-          <Component Id="vulkanloader" Guid='790cb745-37f0-4b97-a35b-9eb715288b60'>
+          <Component Id="vulkanloader" Guid='3EE9D914-6E79-4E3B-A3C3-559782DA3045'>
             <File KeyPath="yes" Source="windows/vulkan-1.dll"></File>
           </Component>
           <Directory Id="MyFontsFolder" Name="fonts">
-            <Component Id="FontsId" Guid="333b7858-8503-4310-b039-e1341613dada">
+            <Component Id="FontsId" Guid="B3D9AC47-25DC-4D6F-B05C-609BC18FDD04">
 {{range .FontFiles}}                <File Id="{{.Id}}" Source="{{.Source}}" {{if .KeyPath}}KeyPath="yes" {{end}}/>
 {{end}}
             </Component>
@@ -205,20 +205,20 @@ const xmlTemplate = `<?xml version='1.0' encoding='utf-8'?>
         </Directory>
 
 	<Directory Id="ProgramMenuFolder">
-	  <Directory Id="ApplicationProgramsFolder" Name="Vice"/>
+	  <Directory Id="ApplicationProgramsFolder" Name="Vice Custom"/>
 	</Directory>
 
 	<Directory Id="DesktopFolder" Name="Desktop">
           <Component Id="ApplicationShortcutDesktop" Guid="*">
             <Shortcut Id="ApplicationDesktopShortcut"
-                      Name="Vice ATC"
-                      Description="Vice ATC Simulator"
+                      Name="Vice Custom"
+                      Description="Vice ATC Simulator (custom build)"
                       Target="[#Vice.exe]"
                       WorkingDirectory="INSTALLFOLDER"/>
             <RemoveFolder Id="DesktopFolder" On="uninstall"/>
             <RegistryValue
                 Root="HKCU"
-                Key="Software\Matt Pharr\Vice"
+                Key="Software\colef12\Vice Custom"
                 Name="installed"
                 Type="integer"
                 Value="1"
@@ -259,23 +259,23 @@ const xmlTemplate = `<?xml version='1.0' encoding='utf-8'?>
     <WixVariable Id="WixUIDialogBmp" Value="windows\dialog.bmp" />
 
     <DirectoryRef Id="ApplicationProgramsFolder">
-      <Component Id="ApplicationShortcut" Guid='93fae481-57c0-499a-84c2-517067428f13'>
+      <Component Id="ApplicationShortcut" Guid='7A667C90-4B98-4FE4-A65E-BB0B12F935E8'>
         <Shortcut Id="ApplicationStartMenuShortcut"
-                  Name="Vice"
-                  Description="ATC Simulator"
+                  Name="Vice Custom"
+                  Description="ATC Simulator (custom build)"
                   Target="[#Vice.exe]"
                   WorkingDirectory="INSTALLFOLDER"/>
         <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall"/>
-        <RegistryValue Root="HKCU" Key="Software\Matt Pharr\Vice" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+        <RegistryValue Root="HKCU" Key="Software\colef12\Vice Custom" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
       </Component>
-      <Component Id="BackshopShortcut" Guid='6a7b8c9d-0e1f-4a2b-9c3d-4e5f6a7b8c9d'>
+      <Component Id="BackshopShortcut" Guid='6348FAB5-4D8B-4729-B73D-62E4AAAC397B'>
         <Shortcut Id="BackshopStartMenuShortcut"
-                  Name="Backshop"
+                  Name="Backshop (Vice Custom)"
                   Description="vice facility engineering tool"
                   Target="[#backshop.exe]"
                   WorkingDirectory="INSTALLFOLDER"/>
         <RemoveFolder Id="BackshopProgramsFolder" Directory="ApplicationProgramsFolder" On="uninstall"/>
-        <RegistryValue Root="HKCU" Key="Software\Matt Pharr\Vice" Name="backshop" Type="integer" Value="1" KeyPath="yes"/>
+        <RegistryValue Root="HKCU" Key="Software\colef12\Vice Custom" Name="backshop" Type="integer" Value="1" KeyPath="yes"/>
       </Component>
     </DirectoryRef>
 

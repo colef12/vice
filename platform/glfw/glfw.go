@@ -108,9 +108,9 @@ func New(config *platform.Config, lg *log.Logger) (platform.Window, error) {
 	}
 	if config.StartInFullScreen {
 		vm := monitors[config.FullScreenMonitor].GetVideoMode()
-		window, err = glfw3.CreateWindow(vm.Width, vm.Height, "vice", monitors[config.FullScreenMonitor], nil)
+		window, err = glfw3.CreateWindow(vm.Width, vm.Height, "Vice Custom", monitors[config.FullScreenMonitor], nil)
 	} else {
-		window, err = glfw3.CreateWindow(config.InitialWindowSize[0], config.InitialWindowSize[1], "vice", nil, nil)
+		window, err = glfw3.CreateWindow(config.InitialWindowSize[0], config.InitialWindowSize[1], "Vice Custom", nil, nil)
 	}
 	if err != nil {
 		glfw3.Terminate()

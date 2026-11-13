@@ -81,7 +81,9 @@ func ConfigDir() (string, error) {
 	if err != nil {
 		return "", fmt.Errorf("unable to find user config dir: %w", err)
 	}
-	return filepath.Join(dir, "Vice"), nil
+	// colef12 fork: "Vice Custom" keeps this build's settings, logs and
+	// downloaded resources apart from a stock vice install's "Vice".
+	return filepath.Join(dir, "Vice Custom"), nil
 }
 
 // configDir is ConfigDir for the places that log to it: a logger that can't

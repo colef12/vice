@@ -98,35 +98,9 @@ func SyncResources(ui SyncUI) error {
 // migrateConfigDirCase renames a lowercase "vice" configuration directory
 // left by older versions to "Vice", for case-sensitive filesystems.
 func migrateConfigDirCase() error {
-	newDir, err := log.ConfigDir()
-	if err != nil {
-		return err
-	}
-	oldDir := filepath.Join(filepath.Dir(newDir), "vice")
-
-	oldInfo, oldErr := os.Stat(oldDir)
-	newInfo, newErr := os.Stat(newDir)
-	// On case-insensitive filesystems (macOS), both paths resolve to the same
-	// directory. os.SameFile detects this so we skip the migration entirely.
-	sameFile := oldErr == nil && newErr == nil && os.SameFile(oldInfo, newInfo)
-	if oldErr != nil || !oldInfo.IsDir() || sameFile {
-		return nil
-	}
-
-	if os.IsNotExist(newErr) {
-		// Only the old lowercase directory exists; rename it.
-		os.Rename(oldDir, newDir)
-	} else if newErr == nil {
-		// Both exist (unusual). Move resources if needed, then remove the old dir.
-		oldRes := filepath.Join(oldDir, "resources")
-		newRes := filepath.Join(newDir, "resources")
-		if _, err := os.Stat(oldRes); err == nil {
-			if _, err := os.Stat(newRes); os.IsNotExist(err) {
-				os.Rename(oldRes, newRes)
-			}
-		}
-		os.RemoveAll(oldDir)
-	}
+	// colef12 fork: disabled. This build's config directory is "Vice Custom",
+	// so the "vice" this looks for would be stock vice's own directory (the
+	// same directory as "Vice" on Windows and macOS), which it would rename.
 	return nil
 }
 

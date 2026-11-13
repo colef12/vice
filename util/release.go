@@ -23,11 +23,18 @@ type Release struct {
 	Created time.Time `json:"created_at"`
 }
 
+// CheckForStockReleases is false in the colef12 fork: mmp/vice releases
+// aren't updates to this build, so vice and backshop don't offer them.
+var CheckForStockReleases = false
+
 // NewerRelease returns the most recent non-beta release if it postdates the
 // running executable's build and nil otherwise. It makes a network request
 // that may take some time or time out, so it should be called
 // asynchronously.
 func NewerRelease(lg *log.Logger) *Release {
+	if !CheckForStockReleases {
+		return nil
+	}
 	const url = "https://api.github.com/repos/mmp/vice/releases"
 
 	resp, err := http.Get(url)

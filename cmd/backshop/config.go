@@ -49,7 +49,7 @@ func configFilePath(lg *log.Logger) string {
 		dir = "."
 	}
 
-	dir = filepath.Join(dir, "Vice")
+	dir = filepath.Join(dir, "Vice Custom") // colef12 fork: apart from stock vice
 	if err := os.MkdirAll(dir, 0o700); err != nil {
 		lg.Errorf("%s: unable to make directory for config file: %v", dir, err)
 	}
