@@ -705,7 +705,7 @@
           ]
         },
         {
-          "destination": "KPBI",
+          "destination": "KDJT",
           "exit": "POBSE",
           "waypoints": "POBSE OHIOS HVQ Q147 BURGG IRQ",
           "airlines": [
@@ -1035,14 +1035,6 @@
       "vfr": {
         "random_routes": {
           "rate": 2.0,
-          "fleet": "lightGA"
-        }
-      }
-    },
-    "I19": {
-      "vfr": {
-        "random_routes": {
-          "rate": 1.2,
           "fleet": "lightGA"
         }
       }

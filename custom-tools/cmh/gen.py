@@ -272,7 +272,7 @@ KOSU_DEP_ROUTES = {
 }
 KOSU_DEPARTURES = [
     dep("KTEB", "RDBUV", "RDBUV NOWZU DJB JHW LVZ5", "EJA", "LXJ"),
-    dep("KPBI", "POBSE", "POBSE OHIOS HVQ Q147 BURGG IRQ", "EJA"),
+    dep("KDJT", "POBSE", "POBSE OHIOS HVQ Q147 BURGG IRQ", "EJA"),
     dep("KMDW", "PKACZ", "PKACZ TARRY ROD FWA PANGG7", "EJA"),
 ]
 
@@ -327,7 +327,6 @@ def airports_day():
                  "departures": KDAY_DEPARTURES, "exit_categories": DAY_EXIT_CAT,
                  "omit_arrival_scratchpad": True, "tower_list": 1},
         "KMGY": vfr(2.0),
-        "I19": vfr(1.2),
         "I73": vfr(0.8),
         "KSGH": vfr(0.8),
         "KVES": vfr(0.4),

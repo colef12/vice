@@ -254,14 +254,6 @@
         }
       }
     },
-    "I19": {
-      "vfr": {
-        "random_routes": {
-          "rate": 1.2,
-          "fleet": "lightGA"
-        }
-      }
-    },
     "I73": {
       "vfr": {
         "random_routes": {
