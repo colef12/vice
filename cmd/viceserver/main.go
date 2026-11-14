@@ -40,7 +40,7 @@ var (
 	navLogCallsign   = flag.String("navlog-callsign", "", "filter navigation logs to only show this `callsign`")
 	smoketest        = flag.Duration("smoketest", 0, "load the scenarios, run a sim with an RPC client attached for this long, and exit; for CI under -race")
 	// colef12 fork: run every scenario of one facility in the smoketest.
-	smoketestFacility = flag.String("smoketest-facility", "", "with -smoketest, run each of this `facility`'s scenarios for the -smoketest duration instead of one default scenario")
+	smoketestFacility = flag.String("smoketest-facility", "", "with -smoketest, run each scenario of these comma-separated `facilities` (or FACILITY/GROUP for one scenario group) for the -smoketest duration instead of one default scenario")
 	wxFacilities      = flag.String("wxfacilities", "", "write the weather pipeline's airport and facility list as JSON to `file` and exit")
 )
 
@@ -177,7 +177,13 @@ func runSmoketest(config server.LaunchConfig, d time.Duration, lg *log.Logger) e
 	}
 
 	if *smoketestFacility != "" {
-		return smoketestAllScenarios(client, connect, *smoketestFacility, d, lg)
+		for _, spec := range strings.Split(*smoketestFacility, ",") {
+			facility, group, _ := strings.Cut(strings.TrimSpace(spec), "/")
+			if err := smoketestAllScenarios(client, connect, facility, group, d, lg); err != nil {
+				return err
+			}
+		}
+		return nil
 	}
 
 	var catalog *scenario.Catalog
@@ -214,16 +220,23 @@ func runSmoketest(config server.LaunchConfig, d time.Duration, lg *log.Logger) e
 }
 
 // smoketestAllScenarios starts each scenario of the given facility in turn
-// and runs it for d (colef12 fork).
-func smoketestAllScenarios(client *rpc.Client, connect server.ConnectResult, facility string,
+// and runs it for d; group, if given, limits it to that scenario group
+// (colef12 fork).
+func smoketestAllScenarios(client *rpc.Client, connect server.ConnectResult, facility, group string,
 	d time.Duration, lg *log.Logger) error {
 	groups, ok := connect.ScenarioCatalogs[facility]
 	if !ok {
 		return fmt.Errorf("%s: no scenarios for facility", facility)
 	}
+	if _, ok := groups[group]; group != "" && !ok {
+		return fmt.Errorf("%s: no scenario group %q", facility, group)
+	}
 
 	n := 0
 	for _, groupName := range util.SortedMapKeys(groups) {
+		if group != "" && groupName != group {
+			continue
+		}
 		catalog := groups[groupName]
 		for _, scenarioName := range util.SortedMapKeys(catalog.Scenarios) {
 			req := server.MakeNewSimRequest()

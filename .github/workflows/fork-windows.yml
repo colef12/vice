@@ -124,9 +124,9 @@ jobs:
 
     # viceserver finds custom-resources/ next to the executable, as the
     # installed vice.exe does. Loading fails on any scenario or facility
-    # configuration error; then each CMH scenario runs with traffic.
-    - name: Load scenarios and run the CMH ones
-      run: ./viceserver -smoketest 20s -smoketest-facility CMH -port 0 -loglevel warn
+    # configuration error; then each custom scenario runs with traffic.
+    - name: Load scenarios and run the custom ones
+      run: ./viceserver -smoketest 20s -smoketest-facility "CMH,PCT/Chesapeake Area" -port 0 -loglevel warn
 
   build-windows:
     name: Build Windows
