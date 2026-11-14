@@ -167,6 +167,7 @@ const (
 	DeleteByController
 	DeletePrespawn   // culled while the sim prespawned its traffic
 	DeleteRateChange // a flight waiting to launch, dropped by a launch config change
+	DeleteAbsorbed   // colef12 fork: worked off to a virtual sector in the human's own area
 )
 
 func (r DeleteReason) String() string {
@@ -183,6 +184,8 @@ func (r DeleteReason) String() string {
 		return "culled in prespawn"
 	case DeleteRateChange:
 		return "dropped by rate change"
+	case DeleteAbsorbed:
+		return "absorbed by virtual sector"
 	default:
 		return "(unhandled delete reason)"
 	}

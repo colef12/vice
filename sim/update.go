@@ -65,6 +65,25 @@ func (s *Sim) isTRACONController(pos ControlPosition) bool {
 	return ok && !ctrl.ERAMFacility
 }
 
+// absorbDelay is how long after checking in with a virtual sector of the
+// human's own area an aircraft stays on the scope (colef12 fork).
+const absorbDelay = 45 * time.Second
+
+// absorbIntoVirtualSector reports whether a pilot that a human at fromTCP
+// sends to toTCP should leave the sim once it checks in there: toTCP is a
+// virtual TRACON position in the same area as fromTCP. That only happens in
+// a scenario that staffs one sector of an area (its "default_consolidation"
+// leaves the rest out), where the virtual sectors exist only to feed the
+// human and nothing would work the traffic the human hands them
+// (colef12 fork).
+func (s *Sim) absorbIntoVirtualSector(fromTCP, toTCP TCP) bool {
+	if !s.isVirtualController(ControlPosition(toTCP)) {
+		return false
+	}
+	area := s.areaForTCP(fromTCP)
+	return area != "" && area == s.areaForTCP(toTCP)
+}
+
 // areaForTCP returns the TRACON area a control position belongs to, or "" if
 // it has none.
 func (s *Sim) areaForTCP(tcp TCP) string {
@@ -692,6 +711,14 @@ func (s *Sim) updateState() {
 						s.contactDeparture(ac, fp)
 					}
 				}
+			}
+
+			// colef12 fork: an aircraft handed to a virtual sector of the
+			// human's own area has left the scenario.
+			if !ac.AbsorbTime.IsZero() && s.State.SimTime.After(ac.AbsorbTime) {
+				s.lg.Debug("absorbed by virtual sector", slog.String("adsb_callsign", string(callsign)))
+				s.deleteAircraft(ac, DeleteAbsorbed)
+				continue
 			}
 
 			// Cull far-away aircraft

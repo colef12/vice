@@ -113,6 +113,13 @@ type Aircraft struct {
 	// filter from dropping its flight plan.
 	WentAround bool
 
+	// colef12 fork: a pilot sent by a human to a virtual position in the
+	// same TRACON area (only possible when a scenario staffs a single
+	// sector) leaves the sim once it has checked in there; see
+	// absorbIntoVirtualSector.
+	AbsorbOnVirtualCheckIn bool
+	AbsorbTime             Time
+
 	// Departure related state
 	DepartureContactAltitude float32 // 0 = waiting for /tc point, -1 = already contacted departure
 	ReportDepartureHeading   bool    // true if runway has multiple exit headings

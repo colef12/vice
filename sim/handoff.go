@@ -216,6 +216,8 @@ func (s *Sim) contactController(tcw TCW, ac *Aircraft, toTCP TCP, delayReduction
 		return speech.MakeUnableIntent("Unable, we are already on your frequency")
 	}
 	fromTCP := s.State.PrimaryPositionForTCW(tcw)
+	ac.AbsorbOnVirtualCheckIn = s.absorbIntoVirtualSector(fromTCP, toTCP)
+	ac.AbsorbTime = Time{}
 
 	// Immediately respond to the current controller that we're
 	// changing frequency.

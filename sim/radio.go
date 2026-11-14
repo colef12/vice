@@ -468,6 +468,12 @@ func (s *Sim) processVirtualControllerContacts() {
 					return true // not ready yet; leave it in the slice
 				}
 
+				if ac, ok := s.Aircraft[pc.ADSBCallsign]; ok && ac.AbsorbOnVirtualCheckIn {
+					// colef12 fork: the virtual sector takes the aircraft
+					// out of the human's way a little after check-in.
+					ac.AbsorbOnVirtualCheckIn = false
+					ac.AbsorbTime = s.State.SimTime.Add(absorbDelay)
+				}
 				if ac, ok := s.Aircraft[pc.ADSBCallsign]; ok && ac.IsDeparture() {
 					// For departures contacting virtual controllers, enqueue climbing to
 					// cruise altitude.
