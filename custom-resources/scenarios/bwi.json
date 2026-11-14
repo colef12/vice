@@ -5289,6 +5289,302 @@
         "direction": "265-325"
       }
     },
+    "CHP - BELAY (WOOLY, BUFFR) - BWI East": {
+      "configuration": "CHP",
+      "default_consolidation": {
+        "1B": [
+          "1W"
+        ],
+        "1W": [
+          "1H"
+        ]
+      },
+      "arrival_runways": [
+        {
+          "airport": "KBWI",
+          "runway": "10"
+        },
+        {
+          "airport": "KESN",
+          "runway": "15"
+        },
+        {
+          "airport": "KMTN",
+          "runway": "15"
+        },
+        {
+          "airport": "KDCA",
+          "runway": "19"
+        }
+      ],
+      "departure_runways": [
+        {
+          "airport": "KBWI",
+          "runway": "15R",
+          "rate": 22
+        },
+        {
+          "airport": "KDCA",
+          "runway": "19",
+          "category": "North",
+          "rate": 9
+        }
+      ],
+      "inbound_rates": {
+        "TRISH5.NUGGY.E": {
+          "KBWI": 8,
+          "KMTN": 1
+        },
+        "TRISH5.DRRES.E": {
+          "KBWI": 3
+        },
+        "ANTHM5": {
+          "KBWI": 10,
+          "KMTN": 1
+        },
+        "CLIPR3": {
+          "KDCA": 10
+        },
+        "SKILS5": {
+          "KDCA": 4
+        },
+        "JERES2/MCRAY2": {
+          "overflights": 10
+        },
+        "ARLFT2.LUNDY": {
+          "overflights": 2
+        }
+      },
+      "wind": {
+        "direction": "95-155"
+      },
+      "description": "BELAY 125.525 with WOOLY and BUFFR combined (Figure 5-1-1)."
+    },
+    "CHP - BELAY (WOOLY, BUFFR) - BWI North": {
+      "configuration": "CHP",
+      "default_consolidation": {
+        "1B": [
+          "1W"
+        ],
+        "1W": [
+          "1H"
+        ]
+      },
+      "arrival_runways": [
+        {
+          "airport": "KBWI",
+          "runway": "33L"
+        },
+        {
+          "airport": "KBWI",
+          "runway": "33R"
+        },
+        {
+          "airport": "KESN",
+          "runway": "4"
+        },
+        {
+          "airport": "KMTN",
+          "runway": "33"
+        },
+        {
+          "airport": "KDCA",
+          "runway": "1"
+        }
+      ],
+      "departure_runways": [
+        {
+          "airport": "KBWI",
+          "runway": "28",
+          "rate": 22
+        },
+        {
+          "airport": "KDCA",
+          "runway": "1",
+          "category": "North",
+          "rate": 9
+        }
+      ],
+      "inbound_rates": {
+        "TRISH5.NUGGY.N": {
+          "KBWI": 8,
+          "KMTN": 1
+        },
+        "TRISH5.DRRES.N": {
+          "KBWI": 3
+        },
+        "ANTHM5": {
+          "KBWI": 10,
+          "KMTN": 1
+        },
+        "CLIPR3": {
+          "KDCA": 10
+        },
+        "SKILS5": {
+          "KDCA": 4
+        },
+        "JERES2/MCRAY2": {
+          "overflights": 10
+        },
+        "ARLFT2.LUNDY": {
+          "overflights": 2
+        }
+      },
+      "wind": {
+        "direction": "285-345"
+      },
+      "description": "BELAY 125.525 with WOOLY and BUFFR combined (Figure 5-1-1)."
+    },
+    "CHP - BELAY (WOOLY, BUFFR) - BWI South": {
+      "configuration": "CHP",
+      "default_consolidation": {
+        "1B": [
+          "1W"
+        ],
+        "1W": [
+          "1H"
+        ]
+      },
+      "arrival_runways": [
+        {
+          "airport": "KBWI",
+          "runway": "15R"
+        },
+        {
+          "airport": "KBWI",
+          "runway": "10"
+        },
+        {
+          "airport": "KESN",
+          "runway": "22"
+        },
+        {
+          "airport": "KMTN",
+          "runway": "15"
+        },
+        {
+          "airport": "KDCA",
+          "runway": "19"
+        }
+      ],
+      "departure_runways": [
+        {
+          "airport": "KBWI",
+          "runway": "15R",
+          "rate": 22
+        },
+        {
+          "airport": "KDCA",
+          "runway": "19",
+          "category": "North",
+          "rate": 9
+        }
+      ],
+      "inbound_rates": {
+        "TRISH5.NUGGY.S": {
+          "KBWI": 8,
+          "KMTN": 1
+        },
+        "TRISH5.DRRES.S": {
+          "KBWI": 3
+        },
+        "ANTHM5": {
+          "KBWI": 10,
+          "KMTN": 1
+        },
+        "CLIPR3": {
+          "KDCA": 10
+        },
+        "SKILS5": {
+          "KDCA": 4
+        },
+        "JERES2/MCRAY2": {
+          "overflights": 10
+        },
+        "ARLFT2.LUNDY": {
+          "overflights": 2
+        }
+      },
+      "wind": {
+        "direction": "105-165"
+      },
+      "description": "BELAY 125.525 with WOOLY and BUFFR combined (Figure 5-1-1)."
+    },
+    "CHP - BELAY (WOOLY, BUFFR) - BWI West": {
+      "configuration": "CHP",
+      "default_consolidation": {
+        "1B": [
+          "1W"
+        ],
+        "1W": [
+          "1H"
+        ]
+      },
+      "arrival_runways": [
+        {
+          "airport": "KBWI",
+          "runway": "33L"
+        },
+        {
+          "airport": "KBWI",
+          "runway": "28"
+        },
+        {
+          "airport": "KESN",
+          "runway": "33"
+        },
+        {
+          "airport": "KMTN",
+          "runway": "33"
+        },
+        {
+          "airport": "KDCA",
+          "runway": "1"
+        }
+      ],
+      "departure_runways": [
+        {
+          "airport": "KBWI",
+          "runway": "28",
+          "rate": 22
+        },
+        {
+          "airport": "KDCA",
+          "runway": "1",
+          "category": "North",
+          "rate": 9
+        }
+      ],
+      "inbound_rates": {
+        "TRISH5.NUGGY.W": {
+          "KBWI": 8,
+          "KMTN": 1
+        },
+        "TRISH5.DRRES.W": {
+          "KBWI": 3
+        },
+        "ANTHM5": {
+          "KBWI": 10,
+          "KMTN": 1
+        },
+        "CLIPR3": {
+          "KDCA": 10
+        },
+        "SKILS5": {
+          "KDCA": 4
+        },
+        "JERES2/MCRAY2": {
+          "overflights": 10
+        },
+        "ARLFT2.LUNDY": {
+          "overflights": 2
+        }
+      },
+      "wind": {
+        "direction": "265-325"
+      },
+      "description": "BELAY 125.525 with WOOLY and BUFFR combined (Figure 5-1-1)."
+    },
     "CHP - BELAY - BWI East": {
       "configuration": "CHP",
       "default_consolidation": {
@@ -5901,6 +6197,254 @@
       },
       "description": "BWIFN (1N) only. Runway 15L: MIIDY4 from PALEO; MTN satellite arrivals."
     },
+    "CHP - BWIFS (BWIFN) - BWI East": {
+      "configuration": "CHP",
+      "default_consolidation": {
+        "1S": [
+          "1N"
+        ]
+      },
+      "arrival_runways": [
+        {
+          "airport": "KBWI",
+          "runway": "10"
+        },
+        {
+          "airport": "KESN",
+          "runway": "15"
+        },
+        {
+          "airport": "KMTN",
+          "runway": "15"
+        },
+        {
+          "airport": "KDCA",
+          "runway": "19"
+        },
+        {
+          "airport": "KBWI",
+          "runway": "15L"
+        }
+      ],
+      "departure_runways": [
+        {
+          "airport": "KBWI",
+          "runway": "15R",
+          "rate": 10
+        }
+      ],
+      "inbound_rates": {
+        "TRISH5.10.1S": {
+          "KBWI": 12
+        },
+        "RAVNN9.10": {
+          "KBWI": 10
+        },
+        "ANTHM5.10.1S": {
+          "KBWI": 8
+        },
+        "MIIDY4.15L.1N": {
+          "KBWI": 8
+        },
+        "T495.MTN.1N": {
+          "KMTN": 3
+        },
+        "TRISH5.MTN.1N": {
+          "KMTN": 2
+        }
+      },
+      "wind": {
+        "direction": "95-155"
+      },
+      "description": "BWIFS 119.7 with BWIFN combined (Figure 5-1-1)."
+    },
+    "CHP - BWIFS (BWIFN) - BWI North": {
+      "configuration": "CHP",
+      "default_consolidation": {
+        "1S": [
+          "1N"
+        ]
+      },
+      "arrival_runways": [
+        {
+          "airport": "KBWI",
+          "runway": "33L"
+        },
+        {
+          "airport": "KBWI",
+          "runway": "33R"
+        },
+        {
+          "airport": "KESN",
+          "runway": "4"
+        },
+        {
+          "airport": "KMTN",
+          "runway": "33"
+        },
+        {
+          "airport": "KDCA",
+          "runway": "1"
+        }
+      ],
+      "departure_runways": [
+        {
+          "airport": "KBWI",
+          "runway": "28",
+          "rate": 10
+        }
+      ],
+      "inbound_rates": {
+        "TRISH5.33L.1S": {
+          "KBWI": 12
+        },
+        "RAVNN9.33L": {
+          "KBWI": 10
+        },
+        "MIIDY4.33R.1N": {
+          "KBWI": 8
+        },
+        "T495.MTN.1N": {
+          "KMTN": 3
+        },
+        "TRISH5.MTN.1N": {
+          "KMTN": 2
+        },
+        "ANTHM5.33R.1N": {
+          "KBWI": 8
+        },
+        "ANTHM5.MTN.1N": {
+          "KMTN": 2
+        }
+      },
+      "wind": {
+        "direction": "285-345"
+      },
+      "description": "BWIFS 119.7 with BWIFN combined (Figure 5-1-1)."
+    },
+    "CHP - BWIFS (BWIFN) - BWI South": {
+      "configuration": "CHP",
+      "default_consolidation": {
+        "1S": [
+          "1N"
+        ]
+      },
+      "arrival_runways": [
+        {
+          "airport": "KBWI",
+          "runway": "15R"
+        },
+        {
+          "airport": "KBWI",
+          "runway": "10"
+        },
+        {
+          "airport": "KESN",
+          "runway": "22"
+        },
+        {
+          "airport": "KMTN",
+          "runway": "15"
+        },
+        {
+          "airport": "KDCA",
+          "runway": "19"
+        },
+        {
+          "airport": "KBWI",
+          "runway": "15L"
+        }
+      ],
+      "departure_runways": [
+        {
+          "airport": "KBWI",
+          "runway": "15R",
+          "rate": 10
+        }
+      ],
+      "inbound_rates": {
+        "TRISH5.15R.1S": {
+          "KBWI": 12
+        },
+        "RAVNN9.15R": {
+          "KBWI": 10
+        },
+        "ANTHM5.15R.1S": {
+          "KBWI": 8
+        },
+        "MIIDY4.15L.1N": {
+          "KBWI": 8
+        },
+        "T495.MTN.1N": {
+          "KMTN": 3
+        },
+        "TRISH5.MTN.1N": {
+          "KMTN": 2
+        }
+      },
+      "wind": {
+        "direction": "105-165"
+      },
+      "description": "BWIFS 119.7 with BWIFN combined (Figure 5-1-1)."
+    },
+    "CHP - BWIFS (BWIFN) - BWI West": {
+      "configuration": "CHP",
+      "default_consolidation": {
+        "1S": [
+          "1N"
+        ]
+      },
+      "arrival_runways": [
+        {
+          "airport": "KBWI",
+          "runway": "33L"
+        },
+        {
+          "airport": "KBWI",
+          "runway": "28"
+        },
+        {
+          "airport": "KESN",
+          "runway": "33"
+        },
+        {
+          "airport": "KMTN",
+          "runway": "33"
+        },
+        {
+          "airport": "KDCA",
+          "runway": "1"
+        }
+      ],
+      "departure_runways": [
+        {
+          "airport": "KBWI",
+          "runway": "28",
+          "rate": 10
+        }
+      ],
+      "inbound_rates": {
+        "TRISH5.28.1S": {
+          "KBWI": 10
+        },
+        "ANTHM5.33L.1S": {
+          "KBWI": 8
+        },
+        "MIIDY4.28.1S": {
+          "KBWI": 6
+        },
+        "RAVNN9.28": {
+          "KBWI": 8
+        },
+        "T495.MTN.1S": {
+          "KMTN": 3
+        }
+      },
+      "wind": {
+        "direction": "265-325"
+      },
+      "description": "BWIFS 119.7 with BWIFN combined (Figure 5-1-1). West operation: BWIFS is the only final."
+    },
     "CHP - BWIFS - BWI East": {
       "configuration": "CHP",
       "default_consolidation": {
@@ -6099,6 +6643,242 @@
         "direction": "265-325"
       },
       "description": "BWIFS (1S) only; West operation has no BWIFN. Runways 28 and 33L plus MTN."
+    },
+    "CHP - GRACO (PALEO) - BWI East": {
+      "configuration": "CHP",
+      "default_consolidation": {
+        "1G": [
+          "1P"
+        ]
+      },
+      "arrival_runways": [
+        {
+          "airport": "KBWI",
+          "runway": "10"
+        },
+        {
+          "airport": "KESN",
+          "runway": "15"
+        },
+        {
+          "airport": "KMTN",
+          "runway": "15"
+        },
+        {
+          "airport": "KDCA",
+          "runway": "19"
+        }
+      ],
+      "departure_runways": [
+        {
+          "airport": "KBWI",
+          "runway": "15R",
+          "rate": 24
+        },
+        {
+          "airport": "KDCA",
+          "runway": "19",
+          "category": "DQO",
+          "rate": 6
+        }
+      ],
+      "inbound_rates": {
+        "DEALE3/MIIDY4": {
+          "KBWI": 8,
+          "KDCA": 10
+        },
+        "T495.GRACO.S": {
+          "KESN": 3,
+          "KMTN": 2
+        },
+        "ARLFT2.COLIN": {
+          "overflights": 2
+        }
+      },
+      "wind": {
+        "direction": "95-155"
+      },
+      "description": "GRACO 124.55 with PALEO combined (Figure 5-1-1)."
+    },
+    "CHP - GRACO (PALEO) - BWI North": {
+      "configuration": "CHP",
+      "default_consolidation": {
+        "1G": [
+          "1P"
+        ]
+      },
+      "arrival_runways": [
+        {
+          "airport": "KBWI",
+          "runway": "33L"
+        },
+        {
+          "airport": "KBWI",
+          "runway": "33R"
+        },
+        {
+          "airport": "KESN",
+          "runway": "4"
+        },
+        {
+          "airport": "KMTN",
+          "runway": "33"
+        },
+        {
+          "airport": "KDCA",
+          "runway": "1"
+        }
+      ],
+      "departure_runways": [
+        {
+          "airport": "KBWI",
+          "runway": "28",
+          "rate": 24
+        },
+        {
+          "airport": "KDCA",
+          "runway": "1",
+          "category": "DQO",
+          "rate": 6
+        }
+      ],
+      "inbound_rates": {
+        "DEALE3/MIIDY4": {
+          "KBWI": 8,
+          "KDCA": 10
+        },
+        "T495.GRACO.N": {
+          "KESN": 3,
+          "KMTN": 2
+        },
+        "ARLFT2.COLIN": {
+          "overflights": 2
+        }
+      },
+      "wind": {
+        "direction": "285-345"
+      },
+      "description": "GRACO 124.55 with PALEO combined (Figure 5-1-1)."
+    },
+    "CHP - GRACO (PALEO) - BWI South": {
+      "configuration": "CHP",
+      "default_consolidation": {
+        "1G": [
+          "1P"
+        ]
+      },
+      "arrival_runways": [
+        {
+          "airport": "KBWI",
+          "runway": "15R"
+        },
+        {
+          "airport": "KBWI",
+          "runway": "10"
+        },
+        {
+          "airport": "KESN",
+          "runway": "22"
+        },
+        {
+          "airport": "KMTN",
+          "runway": "15"
+        },
+        {
+          "airport": "KDCA",
+          "runway": "19"
+        }
+      ],
+      "departure_runways": [
+        {
+          "airport": "KBWI",
+          "runway": "15R",
+          "rate": 24
+        },
+        {
+          "airport": "KDCA",
+          "runway": "19",
+          "category": "DQO",
+          "rate": 6
+        }
+      ],
+      "inbound_rates": {
+        "DEALE3/MIIDY4": {
+          "KBWI": 8,
+          "KDCA": 10
+        },
+        "T495.GRACO.S": {
+          "KESN": 3,
+          "KMTN": 2
+        },
+        "ARLFT2.COLIN": {
+          "overflights": 2
+        }
+      },
+      "wind": {
+        "direction": "105-165"
+      },
+      "description": "GRACO 124.55 with PALEO combined (Figure 5-1-1)."
+    },
+    "CHP - GRACO (PALEO) - BWI West": {
+      "configuration": "CHP",
+      "default_consolidation": {
+        "1G": [
+          "1P"
+        ]
+      },
+      "arrival_runways": [
+        {
+          "airport": "KBWI",
+          "runway": "33L"
+        },
+        {
+          "airport": "KBWI",
+          "runway": "28"
+        },
+        {
+          "airport": "KESN",
+          "runway": "33"
+        },
+        {
+          "airport": "KMTN",
+          "runway": "33"
+        },
+        {
+          "airport": "KDCA",
+          "runway": "1"
+        }
+      ],
+      "departure_runways": [
+        {
+          "airport": "KBWI",
+          "runway": "28",
+          "rate": 24
+        },
+        {
+          "airport": "KDCA",
+          "runway": "1",
+          "category": "DQO",
+          "rate": 6
+        }
+      ],
+      "inbound_rates": {
+        "DEALE3/MIIDY4": {
+          "KBWI": 8,
+          "KDCA": 10
+        },
+        "T495.GRACO.N": {
+          "KESN": 3,
+          "KMTN": 2
+        },
+        "ARLFT2.COLIN": {
+          "overflights": 2
+        }
+      },
+      "wind": {
+        "direction": "265-325"
+      },
+      "description": "GRACO 124.55 with PALEO combined (Figure 5-1-1)."
     },
     "CHP - GRACO - BWI East": {
       "configuration": "CHP",

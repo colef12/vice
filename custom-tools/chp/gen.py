@@ -218,6 +218,51 @@ scen['CHP - BWIFS - BWI West'] = scenario('West', '1S',
     bwi_deps('West', 10),
     description='BWIFS (1S) only; West operation has no BWIFN. Runways 28 and 33L plus MTN.')
 
+# ---------------------------------------------------------------- combined sectors
+# The middle row of Figure 5-1-1: BELAY 125.525 (BELAY, WOOLY, BUFFR),
+# GRACO 124.55 (GRACO, PALEO) and BWIFS 119.7 (BWIFS, BWIFN). Each works the
+# traffic of all of its sectors; the stock flows hand off to whichever of
+# them is first, and the hand-offs between them are internal.
+
+def merge(*rate_maps):
+    out = {}
+    for m in rate_maps:
+        for flow, r in m.items():
+            out.setdefault(flow, {}).update(r)
+    return out
+
+for op in OPS:
+    c = OPCODE[op]
+    t495 = 'T495.GRACO.N' if op in ('North', 'West') else 'T495.GRACO.S'
+    s = scenario(op, '1B',
+        {f'TRISH5.NUGGY.{c}': {'KBWI': 8, 'KMTN': 1}, f'TRISH5.DRRES.{c}': {'KBWI': 3},
+         'ANTHM5': {'KBWI': 10, 'KMTN': 1}, 'CLIPR3': {'KDCA': 10}, 'SKILS5': {'KDCA': 4},
+         'JERES2/MCRAY2': {'overflights': 10}, 'ARLFT2.LUNDY': {'overflights': 2}},
+        bwi_deps(op, 22) + dca_deps(op, 'North', 9),
+        description='BELAY 125.525 with WOOLY and BUFFR combined (Figure 5-1-1).')
+    s['default_consolidation'] = {'1B': ['1W'], '1W': ['1H']}
+    scen[f'CHP - BELAY (WOOLY, BUFFR) - BWI {op}'] = s
+
+    s = scenario(op, '1G',
+        {'DEALE3/MIIDY4': {'KBWI': 8, 'KDCA': 10}, t495: {'KESN': 3, 'KMTN': 2},
+         'ARLFT2.COLIN': {'overflights': 2}},
+        bwi_deps(op, 24) + dca_deps(op, 'DQO', 6),
+        description='GRACO 124.55 with PALEO combined (Figure 5-1-1).')
+    s['default_consolidation'] = {'1G': ['1P']}
+    scen[f'CHP - GRACO (PALEO) - BWI {op}'] = s
+
+    fs, fn = scen[f'CHP - BWIFS - BWI {op}'], scen.get(f'CHP - BWIFN - BWI {op}')
+    s = copy.deepcopy(fs)
+    if fn:
+        s['inbound_rates'] = merge(fs['inbound_rates'], fn['inbound_rates'])
+        for r in fn['arrival_runways']:
+            if r not in s['arrival_runways']:
+                s['arrival_runways'].append(r)
+    s['default_consolidation'] = {'1S': ['1N']}
+    s['description'] = 'BWIFS 119.7 with BWIFN combined (Figure 5-1-1).' + \
+        (' West operation: BWIFS is the only final.' if op == 'West' else '')
+    scen[f'CHP - BWIFS (BWIFN) - BWI {op}'] = s
+
 # ---------------------------------------------------------------- assemble
 
 scenarios = {}
